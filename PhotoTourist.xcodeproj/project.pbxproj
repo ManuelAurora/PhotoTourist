@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		64592EFD1D2E60F60015408F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64592EFC1D2E60F60015408F /* AppDelegate.swift */; };
-		64592EFF1D2E60F60015408F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64592EFE1D2E60F60015408F /* ViewController.swift */; };
+		64592EFF1D2E60F60015408F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64592EFE1D2E60F60015408F /* MapViewController.swift */; };
 		64592F021D2E60F60015408F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64592F001D2E60F60015408F /* Main.storyboard */; };
 		64592F051D2E60F60015408F /* PhotoTourist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 64592F031D2E60F60015408F /* PhotoTourist.xcdatamodeld */; };
 		64592F071D2E60F60015408F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64592F061D2E60F60015408F /* Assets.xcassets */; };
 		64592F0A1D2E60F60015408F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64592F081D2E60F60015408F /* LaunchScreen.storyboard */; };
 		64592F151D2E60F60015408F /* PhotoTouristTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64592F141D2E60F60015408F /* PhotoTouristTests.swift */; };
 		64592F201D2E60F60015408F /* PhotoTouristUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64592F1F1D2E60F60015408F /* PhotoTouristUITests.swift */; };
+		64592F2E1D2E62DE0015408F /* FlickrClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64592F2D1D2E62DE0015408F /* FlickrClient.swift */; };
+		64592F471D2E995B0015408F /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64592F3A1D2E991C0015408F /* OAuthSwift.framework */; };
+		64661E841D2FD77F00D2B485 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64661E831D2FD77F00D2B485 /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,12 +35,68 @@
 			remoteGlobalIDString = 64592EF81D2E60F60015408F;
 			remoteInfo = PhotoTourist;
 		};
+		64592F391D2E991C0015408F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 64592F2F1D2E991C0015408F /* OAuthSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F435027A1A6791B200038A29;
+			remoteInfo = OAuthSwift;
+		};
+		64592F3B1D2E991C0015408F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 64592F2F1D2E991C0015408F /* OAuthSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F451E3C5195B8CD80051434C;
+			remoteInfo = OAuthSwiftDemo;
+		};
+		64592F3D1D2E991C0015408F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 64592F2F1D2E991C0015408F /* OAuthSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C48B28021AFA598D00C7DEF6;
+			remoteInfo = OAuthSwiftOSX;
+		};
+		64592F3F1D2E991C0015408F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 64592F2F1D2E991C0015408F /* OAuthSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C49FD5241AFB5DF500791E1A;
+			remoteInfo = OAuthSwiftOSXDemo;
+		};
+		64592F411D2E991C0015408F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 64592F2F1D2E991C0015408F /* OAuthSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C4B6EE1E1BF74CE300443596;
+			remoteInfo = OAuthSwiftTVOS;
+		};
+		64592F431D2E991C0015408F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 64592F2F1D2E991C0015408F /* OAuthSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C40890C01C11B37000E3146A;
+			remoteInfo = OAuthSwiftWatchOS;
+		};
+		64592F451D2E991C0015408F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 64592F2F1D2E991C0015408F /* OAuthSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C4D50DF71BFB693F0053B624;
+			remoteInfo = OAuthSwiftTests;
+		};
+		64592F481D2E998E0015408F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 64592F2F1D2E991C0015408F /* OAuthSwift.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F43502791A6791B200038A29;
+			remoteInfo = OAuthSwift;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		64592EF91D2E60F60015408F /* PhotoTourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoTourist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64592EFC1D2E60F60015408F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		64592EFE1D2E60F60015408F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		64592EFE1D2E60F60015408F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		64592F011D2E60F60015408F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		64592F041D2E60F60015408F /* PhotoTourist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PhotoTourist.xcdatamodel; sourceTree = "<group>"; };
 		64592F061D2E60F60015408F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +108,9 @@
 		64592F1B1D2E60F60015408F /* PhotoTouristUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoTouristUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		64592F1F1D2E60F60015408F /* PhotoTouristUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTouristUITests.swift; sourceTree = "<group>"; };
 		64592F211D2E60F60015408F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64592F2D1D2E62DE0015408F /* FlickrClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrClient.swift; sourceTree = "<group>"; };
+		64592F2F1D2E991C0015408F /* OAuthSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OAuthSwift.xcodeproj; path = "../../../../Users/manuel/Downloads/OAuthSwift-master/OAuthSwift.xcodeproj"; sourceTree = "<group>"; };
+		64661E831D2FD77F00D2B485 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64592F471D2E995B0015408F /* OAuthSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +142,7 @@
 		64592EF01D2E60F60015408F = {
 			isa = PBXGroup;
 			children = (
+				64592F2F1D2E991C0015408F /* OAuthSwift.xcodeproj */,
 				64592EFB1D2E60F60015408F /* PhotoTourist */,
 				64592F131D2E60F60015408F /* PhotoTouristTests */,
 				64592F1E1D2E60F60015408F /* PhotoTouristUITests */,
@@ -100,7 +164,9 @@
 			isa = PBXGroup;
 			children = (
 				64592EFC1D2E60F60015408F /* AppDelegate.swift */,
-				64592EFE1D2E60F60015408F /* ViewController.swift */,
+				64592EFE1D2E60F60015408F /* MapViewController.swift */,
+				64661E831D2FD77F00D2B485 /* WebViewController.swift */,
+				64592F2D1D2E62DE0015408F /* FlickrClient.swift */,
 				64592F001D2E60F60015408F /* Main.storyboard */,
 				64592F061D2E60F60015408F /* Assets.xcassets */,
 				64592F081D2E60F60015408F /* LaunchScreen.storyboard */,
@@ -128,6 +194,20 @@
 			path = PhotoTouristUITests;
 			sourceTree = "<group>";
 		};
+		64592F301D2E991C0015408F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				64592F3A1D2E991C0015408F /* OAuthSwift.framework */,
+				64592F3C1D2E991C0015408F /* OAuthSwiftDemo.app */,
+				64592F3E1D2E991C0015408F /* OAuthSwift.framework */,
+				64592F401D2E991C0015408F /* OAuthSwiftOSXDemo.app */,
+				64592F421D2E991C0015408F /* OAuthSwift.framework */,
+				64592F441D2E991C0015408F /* OAuthSwift.framework */,
+				64592F461D2E991C0015408F /* OAuthSwiftTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -142,6 +222,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				64592F491D2E998E0015408F /* PBXTargetDependency */,
 			);
 			name = PhotoTourist;
 			productName = PhotoTourist;
@@ -221,6 +302,12 @@
 			mainGroup = 64592EF01D2E60F60015408F;
 			productRefGroup = 64592EFA1D2E60F60015408F /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 64592F301D2E991C0015408F /* Products */;
+					ProjectRef = 64592F2F1D2E991C0015408F /* OAuthSwift.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				64592EF81D2E60F60015408F /* PhotoTourist */,
@@ -229,6 +316,58 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		64592F3A1D2E991C0015408F /* OAuthSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OAuthSwift.framework;
+			remoteRef = 64592F391D2E991C0015408F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		64592F3C1D2E991C0015408F /* OAuthSwiftDemo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = OAuthSwiftDemo.app;
+			remoteRef = 64592F3B1D2E991C0015408F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		64592F3E1D2E991C0015408F /* OAuthSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OAuthSwift.framework;
+			remoteRef = 64592F3D1D2E991C0015408F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		64592F401D2E991C0015408F /* OAuthSwiftOSXDemo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = OAuthSwiftOSXDemo.app;
+			remoteRef = 64592F3F1D2E991C0015408F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		64592F421D2E991C0015408F /* OAuthSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OAuthSwift.framework;
+			remoteRef = 64592F411D2E991C0015408F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		64592F441D2E991C0015408F /* OAuthSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OAuthSwift.framework;
+			remoteRef = 64592F431D2E991C0015408F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		64592F461D2E991C0015408F /* OAuthSwiftTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = OAuthSwiftTests.xctest;
+			remoteRef = 64592F451D2E991C0015408F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		64592EF71D2E60F60015408F /* Resources */ = {
@@ -263,8 +402,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				64592F051D2E60F60015408F /* PhotoTourist.xcdatamodeld in Sources */,
-				64592EFF1D2E60F60015408F /* ViewController.swift in Sources */,
+				64592EFF1D2E60F60015408F /* MapViewController.swift in Sources */,
 				64592EFD1D2E60F60015408F /* AppDelegate.swift in Sources */,
+				64661E841D2FD77F00D2B485 /* WebViewController.swift in Sources */,
+				64592F2E1D2E62DE0015408F /* FlickrClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +437,11 @@
 			isa = PBXTargetDependency;
 			target = 64592EF81D2E60F60015408F /* PhotoTourist */;
 			targetProxy = 64592F1C1D2E60F60015408F /* PBXContainerItemProxy */;
+		};
+		64592F491D2E998E0015408F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OAuthSwift;
+			targetProxy = 64592F481D2E998E0015408F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -489,6 +635,7 @@
 				64592F261D2E60F60015408F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		64592F271D2E60F60015408F /* Build configuration list for PBXNativeTarget "PhotoTouristTests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +644,7 @@
 				64592F291D2E60F60015408F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		64592F2A1D2E60F60015408F /* Build configuration list for PBXNativeTarget "PhotoTouristUITests" */ = {
 			isa = XCConfigurationList;
@@ -505,6 +653,7 @@
 				64592F2C1D2E60F60015408F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
