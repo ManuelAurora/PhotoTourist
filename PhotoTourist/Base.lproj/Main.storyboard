@@ -64,26 +64,8 @@
                     <view key="view" contentMode="scaleToFill" id="16P-mA-JYt">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dfq-F7-aIV">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
-                                <connections>
-                                    <outlet property="delegate" destination="rsj-oj-Opw" id="R7c-6m-xG6"/>
-                                </connections>
-                            </webView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Dfq-F7-aIV" firstAttribute="leading" secondItem="16P-mA-JYt" secondAttribute="leading" id="8Fm-D0-AX2"/>
-                            <constraint firstAttribute="trailing" secondItem="Dfq-F7-aIV" secondAttribute="trailing" id="FwN-No-7HO"/>
-                            <constraint firstItem="Dfq-F7-aIV" firstAttribute="top" secondItem="VVS-Md-AbF" secondAttribute="bottom" id="Hq6-nR-E1y"/>
-                            <constraint firstItem="yLM-0e-xii" firstAttribute="top" secondItem="Dfq-F7-aIV" secondAttribute="bottom" id="OrU-dc-329"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="webView" destination="Dfq-F7-aIV" id="Jis-eT-DD8"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xiy-p8-bmu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

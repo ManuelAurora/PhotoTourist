@@ -16,8 +16,10 @@
 		64592F151D2E60F60015408F /* PhotoTouristTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64592F141D2E60F60015408F /* PhotoTouristTests.swift */; };
 		64592F201D2E60F60015408F /* PhotoTouristUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64592F1F1D2E60F60015408F /* PhotoTouristUITests.swift */; };
 		64592F2E1D2E62DE0015408F /* FlickrClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64592F2D1D2E62DE0015408F /* FlickrClient.swift */; };
-		64592F471D2E995B0015408F /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64592F3A1D2E991C0015408F /* OAuthSwift.framework */; };
 		64661E841D2FD77F00D2B485 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64661E831D2FD77F00D2B485 /* WebViewController.swift */; };
+		9477601F1B9C937682D826ED /* Pods_PhotoTouristTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A82F374EE2FB42B77B71B8 /* Pods_PhotoTouristTests.framework */; };
+		CB3C7E8BAB02092D6654A725 /* Pods_PhotoTourist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1136049442C16546499E42F9 /* Pods_PhotoTourist.framework */; };
+		F941E899A533E6B86F65A71F /* Pods_PhotoTouristUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4718F1198C6482B9E7971E5 /* Pods_PhotoTouristUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,65 +37,14 @@
 			remoteGlobalIDString = 64592EF81D2E60F60015408F;
 			remoteInfo = PhotoTourist;
 		};
-		64592F391D2E991C0015408F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 64592F2F1D2E991C0015408F /* OAuthSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F435027A1A6791B200038A29;
-			remoteInfo = OAuthSwift;
-		};
-		64592F3B1D2E991C0015408F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 64592F2F1D2E991C0015408F /* OAuthSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F451E3C5195B8CD80051434C;
-			remoteInfo = OAuthSwiftDemo;
-		};
-		64592F3D1D2E991C0015408F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 64592F2F1D2E991C0015408F /* OAuthSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C48B28021AFA598D00C7DEF6;
-			remoteInfo = OAuthSwiftOSX;
-		};
-		64592F3F1D2E991C0015408F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 64592F2F1D2E991C0015408F /* OAuthSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C49FD5241AFB5DF500791E1A;
-			remoteInfo = OAuthSwiftOSXDemo;
-		};
-		64592F411D2E991C0015408F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 64592F2F1D2E991C0015408F /* OAuthSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C4B6EE1E1BF74CE300443596;
-			remoteInfo = OAuthSwiftTVOS;
-		};
-		64592F431D2E991C0015408F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 64592F2F1D2E991C0015408F /* OAuthSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C40890C01C11B37000E3146A;
-			remoteInfo = OAuthSwiftWatchOS;
-		};
-		64592F451D2E991C0015408F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 64592F2F1D2E991C0015408F /* OAuthSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C4D50DF71BFB693F0053B624;
-			remoteInfo = OAuthSwiftTests;
-		};
-		64592F481D2E998E0015408F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 64592F2F1D2E991C0015408F /* OAuthSwift.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = F43502791A6791B200038A29;
-			remoteInfo = OAuthSwift;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1136049442C16546499E42F9 /* Pods_PhotoTourist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoTourist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2901BBCE9F3F0DB46FE3A042 /* Pods-PhotoTourist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoTourist.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoTourist/Pods-PhotoTourist.debug.xcconfig"; sourceTree = "<group>"; };
+		31F587E840E411BD8CE680FB /* Pods-PhotoTouristTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoTouristTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoTouristTests/Pods-PhotoTouristTests.release.xcconfig"; sourceTree = "<group>"; };
+		57A82F374EE2FB42B77B71B8 /* Pods_PhotoTouristTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoTouristTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CD077B8FC525BF96E1025DD /* Pods-PhotoTouristUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoTouristUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoTouristUITests/Pods-PhotoTouristUITests.release.xcconfig"; sourceTree = "<group>"; };
 		64592EF91D2E60F60015408F /* PhotoTourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoTourist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64592EFC1D2E60F60015408F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64592EFE1D2E60F60015408F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -109,8 +60,11 @@
 		64592F1F1D2E60F60015408F /* PhotoTouristUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTouristUITests.swift; sourceTree = "<group>"; };
 		64592F211D2E60F60015408F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64592F2D1D2E62DE0015408F /* FlickrClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrClient.swift; sourceTree = "<group>"; };
-		64592F2F1D2E991C0015408F /* OAuthSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OAuthSwift.xcodeproj; path = "../../../../Users/manuel/Downloads/OAuthSwift-master/OAuthSwift.xcodeproj"; sourceTree = "<group>"; };
 		64661E831D2FD77F00D2B485 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		93BAB024C8AFAE7764C9D0B9 /* Pods-PhotoTouristTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoTouristTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoTouristTests/Pods-PhotoTouristTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C4718F1198C6482B9E7971E5 /* Pods_PhotoTouristUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoTouristUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D178A3D64146096BDAAEC341 /* Pods-PhotoTouristUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoTouristUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoTouristUITests/Pods-PhotoTouristUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		EF8479E8899F062C06D47C08 /* Pods-PhotoTourist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoTourist.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoTourist/Pods-PhotoTourist.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64592F471D2E995B0015408F /* OAuthSwift.framework in Frameworks */,
+				CB3C7E8BAB02092D6654A725 /* Pods_PhotoTourist.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9477601F1B9C937682D826ED /* Pods_PhotoTouristTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,20 +88,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F941E899A533E6B86F65A71F /* Pods_PhotoTouristUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0CE2ABCD0163A3000E744266 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2901BBCE9F3F0DB46FE3A042 /* Pods-PhotoTourist.debug.xcconfig */,
+				EF8479E8899F062C06D47C08 /* Pods-PhotoTourist.release.xcconfig */,
+				93BAB024C8AFAE7764C9D0B9 /* Pods-PhotoTouristTests.debug.xcconfig */,
+				31F587E840E411BD8CE680FB /* Pods-PhotoTouristTests.release.xcconfig */,
+				D178A3D64146096BDAAEC341 /* Pods-PhotoTouristUITests.debug.xcconfig */,
+				5CD077B8FC525BF96E1025DD /* Pods-PhotoTouristUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		64592EF01D2E60F60015408F = {
 			isa = PBXGroup;
 			children = (
-				64592F2F1D2E991C0015408F /* OAuthSwift.xcodeproj */,
 				64592EFB1D2E60F60015408F /* PhotoTourist */,
 				64592F131D2E60F60015408F /* PhotoTouristTests */,
 				64592F1E1D2E60F60015408F /* PhotoTouristUITests */,
 				64592EFA1D2E60F60015408F /* Products */,
+				0CE2ABCD0163A3000E744266 /* Pods */,
+				831420C7873FCC48A40D5885 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -194,18 +164,14 @@
 			path = PhotoTouristUITests;
 			sourceTree = "<group>";
 		};
-		64592F301D2E991C0015408F /* Products */ = {
+		831420C7873FCC48A40D5885 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				64592F3A1D2E991C0015408F /* OAuthSwift.framework */,
-				64592F3C1D2E991C0015408F /* OAuthSwiftDemo.app */,
-				64592F3E1D2E991C0015408F /* OAuthSwift.framework */,
-				64592F401D2E991C0015408F /* OAuthSwiftOSXDemo.app */,
-				64592F421D2E991C0015408F /* OAuthSwift.framework */,
-				64592F441D2E991C0015408F /* OAuthSwift.framework */,
-				64592F461D2E991C0015408F /* OAuthSwiftTests.xctest */,
+				1136049442C16546499E42F9 /* Pods_PhotoTourist.framework */,
+				57A82F374EE2FB42B77B71B8 /* Pods_PhotoTouristTests.framework */,
+				C4718F1198C6482B9E7971E5 /* Pods_PhotoTouristUITests.framework */,
 			);
-			name = Products;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,14 +181,16 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 64592F241D2E60F60015408F /* Build configuration list for PBXNativeTarget "PhotoTourist" */;
 			buildPhases = (
+				D8768770CFEF1EED56276CEA /* [CP] Check Pods Manifest.lock */,
 				64592EF51D2E60F60015408F /* Sources */,
 				64592EF61D2E60F60015408F /* Frameworks */,
 				64592EF71D2E60F60015408F /* Resources */,
+				66B6644E32695BA3377867F9 /* [CP] Embed Pods Frameworks */,
+				263D8DF1BC3163AE0A36558E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				64592F491D2E998E0015408F /* PBXTargetDependency */,
 			);
 			name = PhotoTourist;
 			productName = PhotoTourist;
@@ -233,9 +201,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 64592F271D2E60F60015408F /* Build configuration list for PBXNativeTarget "PhotoTouristTests" */;
 			buildPhases = (
+				F04A05A2E7AC13118BB1C9D7 /* [CP] Check Pods Manifest.lock */,
 				64592F0C1D2E60F60015408F /* Sources */,
 				64592F0D1D2E60F60015408F /* Frameworks */,
 				64592F0E1D2E60F60015408F /* Resources */,
+				5C76B68626985D060237B89B /* [CP] Embed Pods Frameworks */,
+				136C679FA4A4ECFC153F7DD0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -251,9 +222,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 64592F2A1D2E60F60015408F /* Build configuration list for PBXNativeTarget "PhotoTouristUITests" */;
 			buildPhases = (
+				B4483EC5A506B085942FC64B /* [CP] Check Pods Manifest.lock */,
 				64592F171D2E60F60015408F /* Sources */,
 				64592F181D2E60F60015408F /* Frameworks */,
 				64592F191D2E60F60015408F /* Resources */,
+				5968C7343B98103E6A4ED860 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -302,12 +275,6 @@
 			mainGroup = 64592EF01D2E60F60015408F;
 			productRefGroup = 64592EFA1D2E60F60015408F /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 64592F301D2E991C0015408F /* Products */;
-					ProjectRef = 64592F2F1D2E991C0015408F /* OAuthSwift.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				64592EF81D2E60F60015408F /* PhotoTourist */,
@@ -316,58 +283,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		64592F3A1D2E991C0015408F /* OAuthSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = OAuthSwift.framework;
-			remoteRef = 64592F391D2E991C0015408F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		64592F3C1D2E991C0015408F /* OAuthSwiftDemo.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = OAuthSwiftDemo.app;
-			remoteRef = 64592F3B1D2E991C0015408F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		64592F3E1D2E991C0015408F /* OAuthSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = OAuthSwift.framework;
-			remoteRef = 64592F3D1D2E991C0015408F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		64592F401D2E991C0015408F /* OAuthSwiftOSXDemo.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = OAuthSwiftOSXDemo.app;
-			remoteRef = 64592F3F1D2E991C0015408F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		64592F421D2E991C0015408F /* OAuthSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = OAuthSwift.framework;
-			remoteRef = 64592F411D2E991C0015408F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		64592F441D2E991C0015408F /* OAuthSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = OAuthSwift.framework;
-			remoteRef = 64592F431D2E991C0015408F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		64592F461D2E991C0015408F /* OAuthSwiftTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = OAuthSwiftTests.xctest;
-			remoteRef = 64592F451D2E991C0015408F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		64592EF71D2E60F60015408F /* Resources */ = {
@@ -395,6 +310,129 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		136C679FA4A4ECFC153F7DD0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoTouristTests/Pods-PhotoTouristTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		263D8DF1BC3163AE0A36558E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoTourist/Pods-PhotoTourist-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5968C7343B98103E6A4ED860 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoTouristUITests/Pods-PhotoTouristUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5C76B68626985D060237B89B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoTouristTests/Pods-PhotoTouristTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		66B6644E32695BA3377867F9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoTourist/Pods-PhotoTourist-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B4483EC5A506B085942FC64B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D8768770CFEF1EED56276CEA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F04A05A2E7AC13118BB1C9D7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		64592EF51D2E60F60015408F /* Sources */ = {
@@ -437,11 +475,6 @@
 			isa = PBXTargetDependency;
 			target = 64592EF81D2E60F60015408F /* PhotoTourist */;
 			targetProxy = 64592F1C1D2E60F60015408F /* PBXContainerItemProxy */;
-		};
-		64592F491D2E998E0015408F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OAuthSwift;
-			targetProxy = 64592F481D2E998E0015408F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -550,6 +583,7 @@
 		};
 		64592F251D2E60F60015408F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2901BBCE9F3F0DB46FE3A042 /* Pods-PhotoTourist.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PhotoTourist/Info.plist;
@@ -561,6 +595,7 @@
 		};
 		64592F261D2E60F60015408F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF8479E8899F062C06D47C08 /* Pods-PhotoTourist.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PhotoTourist/Info.plist;
@@ -572,6 +607,7 @@
 		};
 		64592F281D2E60F60015408F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 93BAB024C8AFAE7764C9D0B9 /* Pods-PhotoTouristTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = PhotoTouristTests/Info.plist;
@@ -584,6 +620,7 @@
 		};
 		64592F291D2E60F60015408F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31F587E840E411BD8CE680FB /* Pods-PhotoTouristTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = PhotoTouristTests/Info.plist;
@@ -596,6 +633,7 @@
 		};
 		64592F2B1D2E60F60015408F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D178A3D64146096BDAAEC341 /* Pods-PhotoTouristUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = PhotoTouristUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -607,6 +645,7 @@
 		};
 		64592F2C1D2E60F60015408F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CD077B8FC525BF96E1025DD /* Pods-PhotoTouristUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = PhotoTouristUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Alamofire
 import OAuthSwift
 
 class FlickrClient
@@ -26,15 +27,14 @@ class FlickrClient
     }
     
     func downloadImages() {
-    
-//        let oauthswift = OAuth1Swift(
-//            consumerKey:    "79fbcc98d30f49f6334399156b8cf996",
-//            consumerSecret: "1f31975486556a28",
-//            requestTokenUrl: "https://www.flickr.com/services/oauth/request_token",
-//            authorizeUrl:    "https://www.flickr.com/services/oauth/authorize",
-//            accessTokenUrl:  "https://www.flickr.com/services/oauth/access_token"
-//        )
-    
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let navigationController = appDelegate.window!.rootViewController as! UINavigationController
+        
+        let webController = navigationController.storyboard!.instantiateViewControllerWithIdentifier("WebController") as! WebViewController
+        
+        
         let oauthswift = OAuth1Swift(
             consumerKey:    "79fbcc98d30f49f6334399156b8cf996",
             consumerSecret: "1f31975486556a28",
@@ -42,46 +42,38 @@ class FlickrClient
             authorizeUrl:    "https://www.flickr.com/services/oauth/authorize",
             accessTokenUrl:  "https://www.flickr.com/services/oauth/access_token"
         )
-
         
-        let methodParameters = [
-            
-            Constants.ParameterKeys.Method:   Constants.ParameterValues.PhotosForLocationMethod,
-            Constants.ParameterKeys.APIKey:   Constants.ParameterValues.APIKey,
-            Constants.ParameterKeys.Format:   Constants.ParameterValues.ResponseFormat,
-           // "oauth_token": token,
-            "perms": "read",
-            "lat": "45",
-            "lon": "50"
-        ]
+        oauthswift.authorize_url_handler = webController
         
-        let urlString = Constants.APIBaseURL// + escapedParameters(methodParameters)
+        navigationController.presentViewController(webController, animated: true, completion: nil)
         
-        let url = NSURL(string: urlString)
-        
-        let appDelegate       = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let navController     = appDelegate.window?.rootViewController as! UINavigationController
-        
-        let controller        = navController.viewControllers.first as! MapViewController
-        
-        let webViewController = controller.storyboard!.instantiateViewControllerWithIdentifier("WebController") as! WebViewController
-        
-        oauthswift.authorize_url_handler = webViewController
-        
-        controller.presentViewController(webViewController, animated: true) { 
-     
-        oauthswift.authorizeWithCallbackURL(NSURL(string: "AuroraInterplay.PhotoTourist:/oauth2Callback")!, success: { (credential, response, parameters) in
-            print(response)
-            }, failure: { (error) in
-                print(error)
-        })
-        
-        
-        
-        }
+        oauthswift.authorizeWithCallbackURL(
+            NSURL(string: "AuroraInterplay.PhotoTourist://oauth-callback")!,
+            success: { credential, response, parameters in
+                
+                print(credential.oauth_token)
+                print(credential.oauth_token_secret)
+                print(parameters["user_id"])
+                
+                navigationController.dismissViewControllerAnimated(true, completion: nil)
+                    
+                oauthswift.client.get("https://api.flickr.com/services/rest/?method=flickr.photos.geo.photosForLocation&api_key=\(Constants.ParameterValues.APIKey)&lat=55.7522200&lon=37.6155600&format=json", success: { (data, response) in
+                    
+                    let a = String(data: data, encoding: NSUTF8StringEncoding)
+                   
+                    print(a)
+                   
+                    }, failure: { (error) in
+                        print(error)
+                })
+                
+            },
+            failure: { error in
+                print(error.localizedDescription)
+            }             
+        )
+                
     }
-    
 }
 
 extension FlickrClient

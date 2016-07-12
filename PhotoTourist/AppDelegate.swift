@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import OAuthSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,12 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
-        let notification = NSNotification(name: "callback", object: nil, userInfo: [UIApplicationOpenURLOptionsAnnotationKey: url])
-        
-        NSNotificationCenter.defaultCenter().postNotification(notification)
-        
+        if (url.host == "oauth-callback") {
+            OAuthSwift.handleOpenURL(url)
+        }
         return true
-        
     }
     
     func applicationWillResignActive(application: UIApplication) {

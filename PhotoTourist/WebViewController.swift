@@ -10,23 +10,26 @@ import Foundation
 import UIKit
 import OAuthSwift
 
-class WebViewController: UIViewController
+
+class WebViewController: OAuthWebViewController
 {
-    @IBOutlet weak var webView: UIWebView!
+    var webView : UIWebView = UIWebView()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        webView.frame = view.bounds
+        webView.autoresizingMask = UIViewAutoresizing.FlexibleHeight
+        webView.scalesPageToFit = true
+        view.addSubview(webView)
+       
+    }
     
-    
-    
+    override func handle(url: NSURL) {
+        
+        let req = NSURLRequest(URL: url)
+        webView.loadRequest(req)
+        
+        
+    }
 }
 
-extension WebViewController: OAuthSwiftURLHandlerType
-{
-    func handle(url: NSURL) {
-        
-        let request = NSURLRequest(URL: url)
-        
-        self.webView.loadRequest(request)
-             
-    }    
-    
-}
