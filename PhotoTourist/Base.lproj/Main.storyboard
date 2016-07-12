@@ -47,11 +47,44 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="CZX-qP-7Ak" id="yAq-8Y-fb7"/>
+                        <segue destination="6CI-Iv-Now" kind="show" identifier="ShowPhoto" id="QDk-Q0-iyI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1324" y="421"/>
+            <point key="canvasLocation" x="1372" y="428"/>
+        </scene>
+        <!--Location Detail View Controller-->
+        <scene sceneID="5a5-5X-8um">
+            <objects>
+                <viewController storyboardIdentifier="Photo" id="6CI-Iv-Now" customClass="LocationDetailViewController" customModule="PhotoTourist" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="K4w-Rf-WyA"/>
+                        <viewControllerLayoutGuide type="bottom" id="SI3-4s-7lf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Iiq-8T-Aga">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C4z-dW-KRZ">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="C4z-dW-KRZ" secondAttribute="trailing" id="BBs-va-5Ia"/>
+                            <constraint firstItem="SI3-4s-7lf" firstAttribute="top" secondItem="C4z-dW-KRZ" secondAttribute="bottom" id="LNQ-7p-Lre"/>
+                            <constraint firstItem="C4z-dW-KRZ" firstAttribute="leading" secondItem="Iiq-8T-Aga" secondAttribute="leading" id="LrM-Ld-ZBi"/>
+                            <constraint firstItem="C4z-dW-KRZ" firstAttribute="top" secondItem="K4w-Rf-WyA" secondAttribute="bottom" id="Soa-fr-62e"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="image" destination="C4z-dW-KRZ" id="Uw3-YC-dFs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dTX-MT-IVh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2136" y="428"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="nT2-dG-HsD">
@@ -69,7 +102,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xiy-p8-bmu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2035" y="416"/>
+            <point key="canvasLocation" x="2826" y="428"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Fyr-eP-ST8">
