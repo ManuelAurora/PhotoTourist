@@ -19,6 +19,8 @@ class LocationDetailViewController: UIViewController, UICollectionViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let cellNib = UINib(nibName: "ItemCell", bundle: nil)
+        collectionView.registerNib(cellNib, forCellWithReuseIdentifier: "ItemCell")
     }
     
     override func viewDidLayoutSubviews() {
@@ -30,7 +32,7 @@ class LocationDetailViewController: UIViewController, UICollectionViewDelegate
         layout.minimumLineSpacing      = 2
         layout.minimumInteritemSpacing = 2
         
-        let width = floor((self.collectionView.frame.size.width / 3) - 6)
+        let width = floor((collectionView.frame.size.width / 3) - 4)
         
         layout.itemSize = CGSize(width: width, height: width)
         

@@ -11,10 +11,16 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MapViewController.(fetchDataForLocation(location : Location) -&gt; ()).(closure #1):MapModel.swift">
+         contextName = "LocationDetailViewController.viewDidLayoutSubviews() -&gt; ():LocationDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "location.images">
+               value = "collectionView.collectionViewLayout">
+            </PersistentString>
+            <PersistentString
+               value = "self.collectionView.frame.size.width">
+            </PersistentString>
+            <PersistentString
+               value = "layout.itemSize">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -23,6 +29,14 @@
          <PersistentStrings>
             <PersistentString
                value = "url.host">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.(fetchDataForLocation(location : Location) -&gt; ()).(closure #1):MapModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "location.images">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
