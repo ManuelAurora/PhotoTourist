@@ -16,7 +16,6 @@ class MapViewController: UIViewController, MKMapViewDelegate
     
     @IBAction func edit(sender: AnyObject) {
         
-        
     }
     
     override func viewDidLoad() {
@@ -28,6 +27,8 @@ class MapViewController: UIViewController, MKMapViewDelegate
     func handlePressure(gestureRecognizer: UIGestureRecognizer) {        
         
         let location = getLocation(fromGesture: gestureRecognizer)
+        
+        fetchDataForLocation(location: location)
         
         mapView.addAnnotation(location)
     }

@@ -12,9 +12,10 @@ import CoreData
 
 class Location: NSObject, MKAnnotation
 {
+    var images = [UIImage]()
     
     var longitude: Double?
-    var latitude: Double?
+    var latitude:  Double?
     
     var coordinate: CLLocationCoordinate2D {
         return CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)

@@ -9,49 +9,52 @@
 import UIKit
 import Alamofire
 
-class LocationDetailViewController: UIViewController
+class LocationDetailViewController: UIViewController, UICollectionViewDelegate
 {
-    @IBOutlet weak var image: UIImageView!
+
+    @IBOutlet weak var collectionView: UICollectionView!
     
-    var location: Location!
+    var location: Location!    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        let parameters = [
-            "api_key": "79fbcc98d30f49f6334399156b8cf996",
-            "lon": "\(location.longitude!)",
-            "lat": "\(location.latitude!)",
-            "format": "json",
-            "method":"flickr.photos.search",
-            "nojsoncallback": "1"            
-        ]
         
-        Alamofire.request(.GET, "https://api.flickr.com/services/rest/", parameters: parameters)
-            .validate(statusCode: 200..<300)
-            .validate()
-            .responseJSON { (response) in
-                
-                let result = response.result.value as! [String: AnyObject]
-                
-                let photosArray = result["photos"]!["photo"] as! [[String: AnyObject]]
-                
-                let photo = photosArray[0]
-                
-                let farm = photo["farm"]
-                let serverID = photo["server"]
-                let id = photo["id"]
-                let secret = photo["secret"]
-                
-                let url = NSURL(string: "https://farm\(farm!).staticflickr.com/\(serverID!)/\(id!)_\(secret!).jpg")
-                
-                let image = UIImage(data: NSData(contentsOfURL: url!)!)
-                
-                self.image.image = image
-        }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
-                
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         
+        layout.sectionInset            = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        layout.minimumLineSpacing      = 2
+        layout.minimumInteritemSpacing = 2
+        
+        let width = floor((self.collectionView.frame.size.width / 3) - 6)
+        
+        layout.itemSize = CGSize(width: width, height: width)
+        
+        collectionView.collectionViewLayout = layout
+    }
+    
+    
+}
+
+extension LocationDetailViewController: UICollectionViewDataSource
+{
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return location.images.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ItemCell", forIndexPath: indexPath) as! ItemCell
+        location.images.count
+        let image = location.images[indexPath.row]
+        
+        cell.imageView.image = image
+        
+        return cell
         
     }
     

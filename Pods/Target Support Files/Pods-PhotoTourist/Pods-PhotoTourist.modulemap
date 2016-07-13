@@ -1,0 +1,6 @@
+framework module Pods_PhotoTourist {
+  umbrella header "Pods-PhotoTourist-umbrella.h"
+
+  export *
+  module * { export * }
+}
