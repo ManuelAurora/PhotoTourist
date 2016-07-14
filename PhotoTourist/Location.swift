@@ -12,7 +12,7 @@ import CoreData
 
 class Location: NSObject, MKAnnotation
 {
-    var images = [UIImage]()
+    var images = [ImageForCell]()
     
     var longitude: Double?
     var latitude:  Double?

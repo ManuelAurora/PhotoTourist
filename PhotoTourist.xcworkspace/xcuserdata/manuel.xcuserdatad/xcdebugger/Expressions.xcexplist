@@ -3,10 +3,10 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "LocationDetailViewController.collectionView(UICollectionView, cellForItemAtIndexPath : NSIndexPath) -&gt; UICollectionViewCell:LocationDetailViewController.swift">
+         contextName = "MapViewController.(fetchDataForLocation(location : Location) -&gt; ()).(closure #1):MapModel.swift">
          <PersistentStrings>
             <PersistentString
-               value = "location.images.count">
+               value = "location.images">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -14,13 +14,41 @@
          contextName = "LocationDetailViewController.viewDidLayoutSubviews() -&gt; ():LocationDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "collectionView.collectionViewLayout">
+               value = "layout.itemSize">
             </PersistentString>
             <PersistentString
                value = "self.collectionView.frame.size.width">
             </PersistentString>
             <PersistentString
-               value = "layout.itemSize">
+               value = "collectionView.collectionViewLayout">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LocationDetailViewController.collectionView(UICollectionView, numberOfItemsInSection : Int) -&gt; Int:LocationDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "location.images.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LocationDetailViewController.collectionView(UICollectionView, cellForItemAtIndexPath : NSIndexPath) -&gt; UICollectionViewCell:LocationDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = " location.images">
+            </PersistentString>
+            <PersistentString
+               value = "location.images.count">
+            </PersistentString>
+            <PersistentString
+               value = "FlickrClient.sharedInstance().total ">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath.row">
+            </PersistentString>
+            <PersistentString
+               value = "imageForCell.image">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -29,14 +57,6 @@
          <PersistentStrings>
             <PersistentString
                value = "url.host">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MapViewController.(fetchDataForLocation(location : Location) -&gt; ()).(closure #1):MapModel.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "location.images">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

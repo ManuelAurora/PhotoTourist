@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ItemCell: UICollectionViewCell {
-
-    @IBOutlet weak var imageView: UIImageView!
+class ItemCell: UICollectionViewCell
+{
+    @IBOutlet weak var imageView: UIImageView!   
     
     override func awakeFromNib() {
-        super.awakeFromNib()              
+        super.awakeFromNib()
+        
     }
 }

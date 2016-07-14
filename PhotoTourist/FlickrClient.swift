@@ -13,10 +13,18 @@ import OAuthSwift
 
 class FlickrClient
 {
-    let session = NSURLSession.sharedSession()
+    var state: State = .NotSearchedYet
     
-    let oauthswift = OAuth2Swift(parameters: [:])
+    enum State
+    {
+        case NotSearchedYet
+        case Loading
+        case NoResults
+        case Results
+    }
 
+    var total = 0
+    
     class func sharedInstance() -> FlickrClient {
         
         struct Singleton
@@ -27,17 +35,49 @@ class FlickrClient
         return Singleton.client
     }
     
-    func downloadImages(lat: Double, long: Double) {
+    func fetchDataForLocation(location location: Location) {
+        
+        let parameters = [
+            "api_key": "79fbcc98d30f49f6334399156b8cf996",
+            "lon": "\(location.longitude!)",
+            "lat": "\(location.latitude!)",
+            "format": "json",
+            "method":"flickr.photos.search",
+            "nojsoncallback": "1"
+        ]
+        
+        Alamofire.request(.GET, "https://api.flickr.com/services/rest/", parameters: parameters)
+            .validate(statusCode: 200..<300)
+            .validate()
+            .responseJSON { (response) in
                 
-        oauthswift!.client.get("https://api.flickr.com/services/rest/?method=flickr.photos.geo.photosForLocation&api_key=\(Constants.ParameterValues.APIKey)&lat=\(lat)&lon=\(long)&format=json", success: { (data, response) in
-            
-            let a = String(data: data, encoding: NSUTF8StringEncoding)
-            
-            print(a)
-            
-            }, failure: { (error) in
-                print(error)
-        })
+                let result = response.result.value as! [String: AnyObject]
+                
+                let photosArray = result["photos"]!["photo"] as! [[String: AnyObject]]
+                
+                self.total = photosArray.count
+                
+                dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.rawValue), 0)) {
+                    
+                    for photo in photosArray
+                    {
+                        let imageForCell = ImageForCell()
+                        
+                        location.images.append(imageForCell)
+                        
+                        let farm     = photo["farm"]
+                        let serverID = photo["server"]
+                        let id       = photo["id"]
+                        let secret   = photo["secret"]
+                        
+                        let url = NSURL(string: "https://farm\(farm!).staticflickr.com/\(serverID!)/\(id!)_\(secret!)_m.jpg")
+                        
+                        imageForCell.url = url
+                        
+                        imageForCell.downloadImage()
+                    }
+                }
+        }
     }
 }
 

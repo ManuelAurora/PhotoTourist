@@ -14,13 +14,20 @@ class LocationDetailViewController: UIViewController, UICollectionViewDelegate
 
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBAction func refresh(sender: AnyObject) {
+        collectionView.reloadData()
+    }
+    
     var location: Location!    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let cellNib = UINib(nibName: "ItemCell", bundle: nil)
+        let loadNib = UINib(nibName: "DownloadingCell", bundle: nil)
+        
         collectionView.registerNib(cellNib, forCellWithReuseIdentifier: "ItemCell")
+        collectionView.registerNib(loadNib, forCellWithReuseIdentifier: "DownloadingCell")
     }
     
     override func viewDidLayoutSubviews() {
@@ -37,28 +44,29 @@ class LocationDetailViewController: UIViewController, UICollectionViewDelegate
         layout.itemSize = CGSize(width: width, height: width)
         
         collectionView.collectionViewLayout = layout
-    }
-    
+    }    
     
 }
 
 extension LocationDetailViewController: UICollectionViewDataSource
 {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         return location.images.count
+        
+        
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ItemCell", forIndexPath: indexPath) as! ItemCell
-        location.images.count
-        let image = location.images[indexPath.row]
+        let imageForCell = location.images[indexPath.row]
         
-        cell.imageView.image = image
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ItemCell", forIndexPath: indexPath) as! ItemCell
+        
+        cell.imageView.image = imageForCell.image
+       
         
         return cell
-        
     }
-    
     
 }

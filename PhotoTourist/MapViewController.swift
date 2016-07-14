@@ -28,7 +28,7 @@ class MapViewController: UIViewController, MKMapViewDelegate
         
         let location = getLocation(fromGesture: gestureRecognizer)
         
-        fetchDataForLocation(location: location)
+        FlickrClient.sharedInstance().fetchDataForLocation(location: location)
         
         mapView.addAnnotation(location)
     }
