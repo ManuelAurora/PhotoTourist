@@ -8,6 +8,8 @@
 
 import UIKit
 import MapKit
+import CoreData
+
 
 class MapViewController: UIViewController, MKMapViewDelegate
 {
@@ -20,6 +22,14 @@ class MapViewController: UIViewController, MKMapViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let request = NSFetchRequest(entityName: "Location")
+        
+        let result = try! CoreDataStack.sharedInstance().context.executeFetchRequest(request) as! [Location]
+        
+        print(result.count)
+        
+        mapView.addAnnotations(result)
         
         addGestures()        
     }
@@ -47,10 +57,12 @@ class MapViewController: UIViewController, MKMapViewDelegate
         let annotation = sender as! MKAnnotationView
         
         let location = annotation.annotation as! Location
-        
+       
         let controller = segue.destinationViewController as! LocationDetailViewController
         
         controller.location = location
     }
+    
+   
 }
 

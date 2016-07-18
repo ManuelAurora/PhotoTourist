@@ -10,24 +10,30 @@ import Foundation
 import MapKit
 import CoreData
 
-class Location: NSObject, MKAnnotation
+
+class Location: NSManagedObject, MKAnnotation
 {
-    var images = [ImageForCell]()
-    
-    var longitude: Double?
-    var latitude:  Double?
+    @NSManaged var images: NSSet
+    @NSManaged var longitude: Double
+    @NSManaged var latitude:  Double
     
     var coordinate: CLLocationCoordinate2D {
-        return CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
+    
+    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
     
     convenience init(withCoordinate: CLLocationCoordinate2D) {
         
-        self.init()
+        let entity = NSEntityDescription.entityForName("Location", inManagedObjectContext: CoreDataStack.sharedInstance().context)
+    
+        self.init(entity: entity!, insertIntoManagedObjectContext: CoreDataStack.sharedInstance().context)
+             
         
         longitude = withCoordinate.longitude
-        latitude  = withCoordinate.latitude        
-        
+        latitude  = withCoordinate.latitude
     }
         
 }

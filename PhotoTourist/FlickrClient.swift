@@ -39,11 +39,12 @@ class FlickrClient
         
         let parameters = [
             "api_key": "79fbcc98d30f49f6334399156b8cf996",
-            "lon": "\(location.longitude!)",
-            "lat": "\(location.latitude!)",
+            "lon": "\(location.longitude)",
+            "lat": "\(location.latitude)",
             "format": "json",
             "method":"flickr.photos.search",
-            "nojsoncallback": "1"
+            "nojsoncallback": "1",
+            "per_page": "15"
         ]
         
         Alamofire.request(.GET, "https://api.flickr.com/services/rest/", parameters: parameters)
@@ -59,23 +60,23 @@ class FlickrClient
                 
                 dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.rawValue), 0)) {
                     
+                    let set = NSMutableSet()
+                    
                     for photo in photosArray
-                    {
-                        let imageForCell = ImageForCell()
-                        
-                        location.images.append(imageForCell)
-                        
+                    {                        
                         let farm     = photo["farm"]
                         let serverID = photo["server"]
                         let id       = photo["id"]
                         let secret   = photo["secret"]
-                        
-                        let url = NSURL(string: "https://farm\(farm!).staticflickr.com/\(serverID!)/\(id!)_\(secret!)_m.jpg")
-                        
-                        imageForCell.url = url
+                                               
+                        let imageForCell = ImageForCell(withURL: "https://farm\(farm!).staticflickr.com/\(serverID!)/\(id!)_\(secret!)_m.jpg")
                         
                         imageForCell.downloadImage()
+                        
+                      set.addObject(imageForCell)
                     }
+                    
+                    location.images = set                    
                 }
         }
     }

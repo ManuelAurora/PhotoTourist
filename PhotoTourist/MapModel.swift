@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Alamofire
+import CoreData
 
 extension MapViewController
 {
@@ -32,7 +32,9 @@ extension MapViewController
         let touchCoordinate = mapView.convertPoint(touchPoint, toCoordinateFromView: mapView!)
         
         let location = Location(withCoordinate: touchCoordinate)
-                
+        
+        try! CoreDataStack.sharedInstance().saveContext()
+        
         return location
     }
     
