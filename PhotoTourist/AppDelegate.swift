@@ -16,7 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let managedContext = CoreDataStack.sharedInstance().context
+        
+        let navController = window!.rootViewController as! UINavigationController
+        
+        let mapController = navController.viewControllers.first as! MapViewController
+    
+        mapController.managedContext = managedContext
+        
         return true
     }
 
@@ -56,7 +64,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
       
     }
-
 
 }
 

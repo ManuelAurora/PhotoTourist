@@ -4,7 +4,7 @@
 //
 //  Created by Мануэль on 19.07.16.
 //  Copyright © 2016 AuroraInterplay. All rights reserved.
-//
+
 
 import UIKit
 import CoreData
@@ -53,4 +53,48 @@ extension LocationDetailViewController
             }, completion: nil)
     }    
     
+    func createAndConfigureFetchController() -> NSFetchedResultsController {
+        
+        let fetchRequest = NSFetchRequest(entityName: "ImageForCell")
+        let predicate    = NSPredicate(format: "location=%@", self.location)
+        
+        fetchRequest.sortDescriptors = []
+        fetchRequest.predicate       = predicate
+        
+        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.sharedInstance().context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        controller.delegate = self
+        
+        try! controller.performFetch()
+        
+        return controller
+    }
+    
+    func CreateAndConfigureCell(forIndexPath indexPath: NSIndexPath) -> ItemCell {
+        
+        let imageForCell = fetchController.fetchedObjects![indexPath.row] as! ImageForCell
+        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ItemCell", forIndexPath: indexPath) as! ItemCell
+        
+        if imageForCell.image != nil
+        {
+            cell.imageView.image = imageForCell.image!
+            
+            removeActivityIndicator(cell.viewWithTag(666) as! UIActivityIndicatorView)
+        }
+        else
+        {
+            if let data = imageForCell.imageData
+            {
+                
+                removeActivityIndicator(cell.viewWithTag(666) as! UIActivityIndicatorView)
+                
+                let image = UIImage(data: data)
+                
+                cell.imageView.image = image
+            }
+        }
+        
+        return cell
+    }
 }

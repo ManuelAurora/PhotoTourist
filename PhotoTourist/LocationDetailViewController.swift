@@ -11,35 +11,23 @@ import CoreData
 
 class LocationDetailViewController: UIViewController, UICollectionViewDelegate
 {
-
+    var location:       Location!
+    var managedContext: NSManagedObjectContext!
+    
+    var updateIndexPaths = [NSIndexPath]()
+    
+    var fetchController: NSFetchedResultsController {
+       
+        return createAndConfigureFetchController()
+    }
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
+
     @IBAction func refresh(sender: AnyObject) {
         collectionView.reloadData()
     }
     
-    var location: Location!    
-    
-    var updateIndexPaths = [NSIndexPath]()
-    
-    lazy var fetchController: NSFetchedResultsController = {
-       
-        let fetchRequest = NSFetchRequest(entityName: "ImageForCell")
-        
-        let predicate = NSPredicate(format: "location=%@", self.location)
-        
-        fetchRequest.sortDescriptors = []
-        
-        fetchRequest.predicate = predicate
-        
-        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.sharedInstance().context, sectionNameKeyPath: nil, cacheName: nil)
-        
-        controller.delegate = self
-        
-        try! controller.performFetch()
-        
-        return controller
-    }()    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,28 +52,7 @@ extension LocationDetailViewController: UICollectionViewDataSource
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let imageForCell = fetchController.fetchedObjects![indexPath.row] as! ImageForCell
-        
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ItemCell", forIndexPath: indexPath) as! ItemCell
-        
-        if imageForCell.image != nil
-        {
-            cell.imageView.image = imageForCell.image!
-            
-            removeActivityIndicator(cell.viewWithTag(666) as! UIActivityIndicatorView)
-        }
-        else
-        {
-            if let data = imageForCell.imageData
-            {
-                
-                removeActivityIndicator(cell.viewWithTag(666) as! UIActivityIndicatorView)
-                
-                let image = UIImage(data: data)
-              
-                cell.imageView.image = image
-            }
-        }
+      let cell = CreateAndConfigureCell(forIndexPath: indexPath)
         
         return cell
     }
@@ -98,7 +65,7 @@ extension LocationDetailViewController: NSFetchedResultsControllerDelegate
         switch type
         {
         case .Update:
-            print("Updated")
+            
             updateIndexPaths.append(indexPath!)
             
         case .Delete:

@@ -65,4 +65,13 @@ extension MapViewController
         }
     }
     
+    func fetchLocations() -> [Location] {
+        
+        let request = NSFetchRequest(entityName: "Location")
+        
+        let result = try! managedContext.executeFetchRequest(request) as! [Location]
+        
+        return result
+    }
+    
 }

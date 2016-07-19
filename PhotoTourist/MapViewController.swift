@@ -10,9 +10,10 @@ import UIKit
 import MapKit
 import CoreData
 
-
 class MapViewController: UIViewController, MKMapViewDelegate
 {
+    
+    var managedContext: NSManagedObjectContext!
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -23,11 +24,9 @@ class MapViewController: UIViewController, MKMapViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let request = NSFetchRequest(entityName: "Location")
+        let locations = fetchLocations()
         
-        let result = try! CoreDataStack.sharedInstance().context.executeFetchRequest(request) as! [Location]
-        
-        mapView.addAnnotations(result)
+        mapView.addAnnotations(locations)
         
         addGestures()        
     }
@@ -60,7 +59,9 @@ class MapViewController: UIViewController, MKMapViewDelegate
        
         let controller = segue.destinationViewController as! LocationDetailViewController
         
-        controller.location = location
+        controller.location       = location
+        controller.managedContext = managedContext
+        
     }
     
     func mapView(mapView: MKMapView, didAddAnnotationViews views: [MKAnnotationView]) {        
