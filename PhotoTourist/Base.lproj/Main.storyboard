@@ -111,6 +111,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="9cT-A7-gt2" id="bRM-co-nQq"/>
+                        <outlet property="mapView" destination="0lr-Fu-gOv" id="Gv9-Ek-vrw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dTX-MT-IVh" userLabel="First Responder" sceneMemberID="firstResponder"/>

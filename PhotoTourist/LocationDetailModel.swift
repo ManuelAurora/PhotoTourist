@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import MapKit
 
 extension LocationDetailViewController
 {
@@ -33,6 +34,17 @@ extension LocationDetailViewController
         let cellNib = UINib(nibName: "ItemCell",        bundle: nil)
        
         collectionView.registerNib(cellNib, forCellWithReuseIdentifier: "ItemCell")
+    }
+    
+    func setupMapViewCenterCoordinate() {
+        
+        let coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+        
+        mapView.setZoomByDelta(0.05, animated: true)
+        
+        mapView.setCenterCoordinate(coordinate, animated: false)
+        
+        mapView.addAnnotation(location)
     }
     
     func removeActivityIndicator(indicator: UIActivityIndicatorView) {

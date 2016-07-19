@@ -53,15 +53,14 @@ class MapViewController: UIViewController, MKMapViewDelegate
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        let annotation = sender as! MKAnnotationView
+        let annotationView = sender as! MKAnnotationView
         
-        let location = annotation.annotation as! Location
+        let location = annotationView.annotation as! Location
        
         let controller = segue.destinationViewController as! LocationDetailViewController
         
         controller.location       = location
-        controller.managedContext = managedContext
-        
+        controller.managedContext = managedContext        
     }
     
     func mapView(mapView: MKMapView, didAddAnnotationViews views: [MKAnnotationView]) {        

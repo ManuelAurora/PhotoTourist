@@ -2,15 +2,19 @@
 //  LocationDetailViewController.swift
 //  PhotoTourist
 //
-//  Created by Мануэль on 12.07.16.
+//  Created by Manuel on 12.07.16.
 //  Copyright © 2016 AuroraInterplay. All rights reserved.
 //
 
 import UIKit
 import CoreData
+import MapKit
 
 class LocationDetailViewController: UIViewController, UICollectionViewDelegate
 {
+    
+    //MARK: * Variables *
+    
     var location:       Location!
     var managedContext: NSManagedObjectContext!
     
@@ -21,26 +25,34 @@ class LocationDetailViewController: UIViewController, UICollectionViewDelegate
         return createAndConfigureFetchController()
     }
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    //MARK: * Outlets *
     
+    @IBOutlet weak var mapView:        MKMapView!
+    @IBOutlet weak var collectionView: UICollectionView!
 
+    //MARK: * Actions() *
+    
     @IBAction func refresh(sender: AnyObject) {
         collectionView.reloadData()
     }
     
+    //MARK: * Overrided Functions() *
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupMapViewCenterCoordinate()
         registerNibs()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-       makeCustomLayout()
+        makeCustomLayout()
     }
 }
+
+//MARK: === EXTENSION -> UICollectionViewDataSource ===
 
 extension LocationDetailViewController: UICollectionViewDataSource
 {
@@ -49,7 +61,6 @@ extension LocationDetailViewController: UICollectionViewDataSource
         return fetchController.fetchedObjects!.count
     }
     
-    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
       let cell = CreateAndConfigureCell(forIndexPath: indexPath)
@@ -57,6 +68,8 @@ extension LocationDetailViewController: UICollectionViewDataSource
         return cell
     }
 }
+
+//MARK: === EXTENSION -> NSFetchedResultsControllerDelegate ===
 
 extension LocationDetailViewController: NSFetchedResultsControllerDelegate
 {

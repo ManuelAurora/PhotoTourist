@@ -129,7 +129,7 @@
 			children = (
 				64557EB11D3E5D78005C0AF0 /* Reusable Classes */,
 				64557EB21D3E5DA3005C0AF0 /* Singletons */,
-				64557EB31D3E5DB7005C0AF0 /* VC  BackEnd */,
+				64557EB31D3E5DB7005C0AF0 /* ViewController + Extension */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -153,13 +153,13 @@
 			name = Singletons;
 			sourceTree = "<group>";
 		};
-		64557EB31D3E5DB7005C0AF0 /* VC  BackEnd */ = {
+		64557EB31D3E5DB7005C0AF0 /* ViewController + Extension */ = {
 			isa = PBXGroup;
 			children = (
 				647517DD1D35363900BB2ECF /* MapModel.swift */,
 				64557EAE1D3E59E0005C0AF0 /* LocationDetailModel.swift */,
 			);
-			name = "VC  BackEnd";
+			name = "ViewController + Extension";
 			sourceTree = "<group>";
 		};
 		64557EB41D3E5DD3005C0AF0 /* Controllers */ = {
