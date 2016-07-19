@@ -8,16 +8,16 @@
 
 import UIKit
 import CoreData
+import MapKit
 
 extension MapViewController
-{
-    
+{    
     func addGestures() {
         
         let pressureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handlePressure))
-        
-        pressureRecognizer.minimumPressDuration = 0.8
                 
+        pressureRecognizer.minimumPressDuration = 0.8
+        
         mapView.addGestureRecognizer(pressureRecognizer)
         
         mapView.delegate = self
@@ -38,6 +38,31 @@ extension MapViewController
         return location
     }
     
-   
+    func animateAnnotation(annotation: MKAnnotationView) {
+        
+        let endFrame = annotation.frame
+        
+        annotation.frame = CGRectOffset(endFrame, 0, -500)
+        
+        UIView.animateWithDuration(0.5, delay: 0.1, options: .CurveEaseIn, animations: { 
+            
+            annotation.frame = endFrame
+            
+            }) {  _ in
+                
+                UIView.animateWithDuration(0.05, delay: 0, options: .CurveEaseInOut, animations: { 
+                    
+                    annotation.transform = CGAffineTransformMakeScale(1, 0.6)
+                    
+                }) { _ in
+                
+                    UIView.animateWithDuration(0.1, delay: 0, options: .CurveEaseInOut, animations: { 
+                        
+                        annotation.transform = CGAffineTransformIdentity
+                        
+                        }, completion: nil)
+                }
+        }
+    }
     
 }

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 import CoreData
 
 class LocationDetailViewController: UIViewController, UICollectionViewDelegate
@@ -40,40 +39,19 @@ class LocationDetailViewController: UIViewController, UICollectionViewDelegate
         try! controller.performFetch()
         
         return controller
-    }()
-    
+    }()    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let cellNib = UINib(nibName: "ItemCell",        bundle: nil)
-        let loadNib = UINib(nibName: "DownloadingCell", bundle: nil)
-        
-        collectionView.registerNib(loadNib, forCellWithReuseIdentifier: "DownloadingCell")
-        collectionView.registerNib(cellNib, forCellWithReuseIdentifier: "ItemCell")
+        registerNibs()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        
-        layout.sectionInset            = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
-        layout.minimumLineSpacing      = 2
-        layout.minimumInteritemSpacing = 2
-        
-        let width = floor((collectionView.frame.size.width / 3) - 4)
-        
-        layout.itemSize = CGSize(width: width, height: width)
-        
-        collectionView.collectionViewLayout = layout
+       makeCustomLayout()
     }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-      
-    }
-    
 }
 
 extension LocationDetailViewController: UICollectionViewDataSource
@@ -81,8 +59,8 @@ extension LocationDetailViewController: UICollectionViewDataSource
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return fetchController.fetchedObjects!.count
-        
     }
+    
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
@@ -111,19 +89,11 @@ extension LocationDetailViewController: UICollectionViewDataSource
         
         return cell
     }
-    
-    func removeActivityIndicator(indicator: UIActivityIndicatorView) {
-        
-        indicator.hidden = true
-        indicator.stopAnimating()
-    }
-    
 }
 
 extension LocationDetailViewController: NSFetchedResultsControllerDelegate
 {
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        
         
         switch type
         {
@@ -143,17 +113,9 @@ extension LocationDetailViewController: NSFetchedResultsControllerDelegate
         }
     }
     
-    
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         
-        collectionView.performBatchUpdates({
-            
-            for path in self.updateIndexPaths
-            {
-                self.collectionView.reloadItemsAtIndexPaths([path])
-            }
-            
-            }, completion: nil)
+        reloadItems()
     }
 }
 

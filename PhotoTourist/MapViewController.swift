@@ -27,14 +27,14 @@ class MapViewController: UIViewController, MKMapViewDelegate
         
         let result = try! CoreDataStack.sharedInstance().context.executeFetchRequest(request) as! [Location]
         
-        print(result.count)
-        
         mapView.addAnnotations(result)
         
         addGestures()        
     }
     
     func handlePressure(gestureRecognizer: UIGestureRecognizer) {        
+        
+        guard gestureRecognizer.state == .Began else { return }
         
         let location = getLocation(fromGesture: gestureRecognizer)
         
@@ -63,6 +63,14 @@ class MapViewController: UIViewController, MKMapViewDelegate
         controller.location = location
     }
     
-   
+    func mapView(mapView: MKMapView, didAddAnnotationViews views: [MKAnnotationView]) {        
+        
+        for annotation in views
+        {
+            animateAnnotation(annotation)
+        }
+        
+    }
+    
 }
 

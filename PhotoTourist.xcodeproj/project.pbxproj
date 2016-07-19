@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		64557EAF1D3E59E0005C0AF0 /* LocationDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64557EAE1D3E59E0005C0AF0 /* LocationDetailModel.swift */; };
 		64592EFD1D2E60F60015408F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64592EFC1D2E60F60015408F /* AppDelegate.swift */; };
 		64592EFF1D2E60F60015408F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64592EFE1D2E60F60015408F /* MapViewController.swift */; };
 		64592F021D2E60F60015408F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64592F001D2E60F60015408F /* Main.storyboard */; };
@@ -52,6 +53,7 @@
 		31F587E840E411BD8CE680FB /* Pods-PhotoTouristTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoTouristTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoTouristTests/Pods-PhotoTouristTests.release.xcconfig"; sourceTree = "<group>"; };
 		57A82F374EE2FB42B77B71B8 /* Pods_PhotoTouristTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoTouristTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CD077B8FC525BF96E1025DD /* Pods-PhotoTouristUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoTouristUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoTouristUITests/Pods-PhotoTouristUITests.release.xcconfig"; sourceTree = "<group>"; };
+		64557EAE1D3E59E0005C0AF0 /* LocationDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailModel.swift; sourceTree = "<group>"; };
 		64592EF91D2E60F60015408F /* PhotoTourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoTourist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64592EFC1D2E60F60015408F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64592EFE1D2E60F60015408F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +124,99 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		64557EB01D3E5D5B005C0AF0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				64557EB11D3E5D78005C0AF0 /* Reusable Classes */,
+				64557EB21D3E5DA3005C0AF0 /* Singletons */,
+				64557EB31D3E5DB7005C0AF0 /* VC  BackEnd */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		64557EB11D3E5D78005C0AF0 /* Reusable Classes */ = {
+			isa = PBXGroup;
+			children = (
+				647517D71D35126400BB2ECF /* Location.swift */,
+				647517DF1D353CE300BB2ECF /* ItemCell.swift */,
+				646B2BE21D367F63008B5940 /* ImageForCell.swift */,
+			);
+			name = "Reusable Classes";
+			sourceTree = "<group>";
+		};
+		64557EB21D3E5DA3005C0AF0 /* Singletons */ = {
+			isa = PBXGroup;
+			children = (
+				64749DA01D3CFF5C00013FF8 /* CoreDataStack.swift */,
+				64592F2D1D2E62DE0015408F /* FlickrClient.swift */,
+			);
+			name = Singletons;
+			sourceTree = "<group>";
+		};
+		64557EB31D3E5DB7005C0AF0 /* VC  BackEnd */ = {
+			isa = PBXGroup;
+			children = (
+				647517DD1D35363900BB2ECF /* MapModel.swift */,
+				64557EAE1D3E59E0005C0AF0 /* LocationDetailModel.swift */,
+			);
+			name = "VC  BackEnd";
+			sourceTree = "<group>";
+		};
+		64557EB41D3E5DD3005C0AF0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				64557EB51D3E5DDB005C0AF0 /* ViewControllers */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		64557EB51D3E5DDB005C0AF0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				64592EFE1D2E60F60015408F /* MapViewController.swift */,
+				647517D91D351D2100BB2ECF /* LocationDetailViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		64557EB61D3E5E17005C0AF0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				647517DB1D35360700BB2ECF /* MKMapView + Extension.swift */,
+				64557EB81D3E5E61005C0AF0 /* Storyboards */,
+				64557EB71D3E5E1E005C0AF0 /* NIBs */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		64557EB71D3E5E1E005C0AF0 /* NIBs */ = {
+			isa = PBXGroup;
+			children = (
+				646B2BDE1D366C95008B5940 /* ItemCell.xib */,
+			);
+			name = NIBs;
+			sourceTree = "<group>";
+		};
+		64557EB81D3E5E61005C0AF0 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				64592F081D2E60F60015408F /* LaunchScreen.storyboard */,
+				64592F001D2E60F60015408F /* Main.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		64557EB91D3E5E9D005C0AF0 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				64592EFC1D2E60F60015408F /* AppDelegate.swift */,
+				64592F061D2E60F60015408F /* Assets.xcassets */,
+				64592F0B1D2E60F60015408F /* Info.plist */,
+				64592F031D2E60F60015408F /* PhotoTourist.xcdatamodeld */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
 		64592EF01D2E60F60015408F = {
 			isa = PBXGroup;
 			children = (
@@ -147,22 +242,10 @@
 		64592EFB1D2E60F60015408F /* PhotoTourist */ = {
 			isa = PBXGroup;
 			children = (
-				64592EFC1D2E60F60015408F /* AppDelegate.swift */,
-				647517D71D35126400BB2ECF /* Location.swift */,
-				64749DA01D3CFF5C00013FF8 /* CoreDataStack.swift */,
-				64592EFE1D2E60F60015408F /* MapViewController.swift */,
-				647517DD1D35363900BB2ECF /* MapModel.swift */,
-				647517DB1D35360700BB2ECF /* MKMapView + Extension.swift */,
-				647517DF1D353CE300BB2ECF /* ItemCell.swift */,
-				646B2BE21D367F63008B5940 /* ImageForCell.swift */,
-				64592F2D1D2E62DE0015408F /* FlickrClient.swift */,
-				647517D91D351D2100BB2ECF /* LocationDetailViewController.swift */,
-				646B2BDE1D366C95008B5940 /* ItemCell.xib */,
-				64592F001D2E60F60015408F /* Main.storyboard */,
-				64592F061D2E60F60015408F /* Assets.xcassets */,
-				64592F081D2E60F60015408F /* LaunchScreen.storyboard */,
-				64592F0B1D2E60F60015408F /* Info.plist */,
-				64592F031D2E60F60015408F /* PhotoTourist.xcdatamodeld */,
+				64557EB61D3E5E17005C0AF0 /* View */,
+				64557EB01D3E5D5B005C0AF0 /* Model */,
+				64557EB41D3E5DD3005C0AF0 /* Controllers */,
+				64557EB91D3E5E9D005C0AF0 /* Other */,
 			);
 			path = PhotoTourist;
 			sourceTree = "<group>";
@@ -465,6 +548,7 @@
 				646B2BE31D367F63008B5940 /* ImageForCell.swift in Sources */,
 				647517DE1D35363900BB2ECF /* MapModel.swift in Sources */,
 				647517E01D353CE300BB2ECF /* ItemCell.swift in Sources */,
+				64557EAF1D3E59E0005C0AF0 /* LocationDetailModel.swift in Sources */,
 				647517DC1D35360700BB2ECF /* MKMapView + Extension.swift in Sources */,
 				64592EFF1D2E60F60015408F /* MapViewController.swift in Sources */,
 				64749DA11D3CFF5C00013FF8 /* CoreDataStack.swift in Sources */,
