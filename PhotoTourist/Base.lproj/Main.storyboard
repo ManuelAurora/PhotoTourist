@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="CZX-qP-7Ak">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="CZX-qP-7Ak">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </mapView>
                         </subviews>
@@ -29,6 +29,7 @@
                             <constraint firstItem="CZX-qP-7Ak" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="vPP-sI-wy6"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="Qom-0Y-BGA">
                         <barButtonItem key="rightBarButtonItem" title="Edit" style="plain" id="X3g-Zo-Bdt">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="B8t-G9-Hrr">
@@ -45,6 +46,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="CZX-qP-7Ak" id="yAq-8Y-fb7"/>
                         <segue destination="6CI-Iv-Now" kind="show" identifier="ShowPhoto" id="QDk-Q0-iyI"/>
@@ -75,43 +77,45 @@
                                     <outlet property="delegate" destination="6CI-Iv-Now" id="KLm-RY-TJD"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O64-YB-uTa">
-                                <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kJv-Wo-fbc">
-                                <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                            </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="0lr-Fu-gOv">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="lzb-uo-g6D"/>
                                 </constraints>
                             </mapView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ztd-B0-QfV">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="YaR-dx-KJI"/>
+                                    <barButtonItem title="NewCollection" style="plain" id="Wje-Tx-bQF">
+                                        <connections>
+                                            <action selector="makeNewCollection:" destination="6CI-Iv-Now" id="Mut-i1-8a8"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="f1k-Dj-Xcm"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="9cT-A7-gt2" firstAttribute="top" secondItem="0lr-Fu-gOv" secondAttribute="bottom" constant="4" id="3kk-1x-Nz1"/>
+                            <constraint firstAttribute="trailing" secondItem="Ztd-B0-QfV" secondAttribute="trailing" id="40Q-Yi-fYW"/>
                             <constraint firstItem="0lr-Fu-gOv" firstAttribute="top" secondItem="Iiq-8T-Aga" secondAttribute="top" id="7iU-vK-VGi"/>
                             <constraint firstItem="9cT-A7-gt2" firstAttribute="leading" secondItem="Iiq-8T-Aga" secondAttribute="leading" id="8kL-3q-Cu2"/>
+                            <constraint firstItem="Ztd-B0-QfV" firstAttribute="top" secondItem="9cT-A7-gt2" secondAttribute="bottom" id="Eay-aW-pdH"/>
                             <constraint firstItem="0lr-Fu-gOv" firstAttribute="leading" secondItem="Iiq-8T-Aga" secondAttribute="leading" id="W1b-B8-ECD"/>
+                            <constraint firstAttribute="bottom" secondItem="Ztd-B0-QfV" secondAttribute="bottom" id="h1w-ck-KJz"/>
                             <constraint firstAttribute="trailing" secondItem="9cT-A7-gt2" secondAttribute="trailing" id="hFq-3a-bRm"/>
-                            <constraint firstItem="SI3-4s-7lf" firstAttribute="top" secondItem="9cT-A7-gt2" secondAttribute="bottom" id="jBM-ay-3nr"/>
+                            <constraint firstItem="Ztd-B0-QfV" firstAttribute="leading" secondItem="Iiq-8T-Aga" secondAttribute="leading" id="iFA-2j-XFq"/>
                             <constraint firstAttribute="trailing" secondItem="0lr-Fu-gOv" secondAttribute="trailing" id="zom-WT-4tf"/>
                         </constraints>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="yWX-Hz-gzC">
-                            <connections>
-                                <action selector="refresh:" destination="6CI-Iv-Now" id="7Oa-JE-oEG"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="9cT-A7-gt2" id="bRM-co-nQq"/>
                         <outlet property="mapView" destination="0lr-Fu-gOv" id="Gv9-Ek-vrw"/>
+                        <outlet property="newCollectionButton" destination="Wje-Tx-bQF" id="DgL-7I-OoO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dTX-MT-IVh" userLabel="First Responder" sceneMemberID="firstResponder"/>

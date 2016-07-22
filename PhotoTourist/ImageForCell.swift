@@ -16,6 +16,7 @@ class ImageForCell: NSManagedObject
     
     var image: UIImage?
     
+    
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
@@ -41,9 +42,7 @@ class ImageForCell: NSManagedObject
             if let data = data, let image = UIImage(data: data)
             {
                 self.image = image
-                self.imageData = data
-                
-                try! CoreDataStack.sharedInstance().saveContext()
+                self.imageData = data           
             }
         }
         

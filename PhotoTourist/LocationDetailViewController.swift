@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import MapKit
 
-class LocationDetailViewController: UIViewController, UICollectionViewDelegate
+class LocationDetailViewController: UIViewController
 {
     
     //MARK: * Variables *
@@ -18,22 +18,46 @@ class LocationDetailViewController: UIViewController, UICollectionViewDelegate
     var location:       Location!
     var managedContext: NSManagedObjectContext!
     
-    var updateIndexPaths = [NSIndexPath]()
+    var updateIndexPaths   = [NSIndexPath]()
+    var selectedIndexPaths = [NSIndexPath]()
+    var deleteIndexPaths   = [NSIndexPath]()
     
-    var fetchController: NSFetchedResultsController {
-       
-        return createAndConfigureFetchController()
-    }
+    lazy var fetchController: NSFetchedResultsController = {
+        
+        let fetchRequest = NSFetchRequest(entityName: "ImageForCell")
+        let predicate    = NSPredicate(format: "location=%@", self.location)
+        
+        fetchRequest.sortDescriptors = []
+        fetchRequest.predicate       = predicate
+        
+        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        controller.delegate = self
+        
+        try! controller.performFetch()
+        
+        return controller
+    }()
     
     //MARK: * Outlets *
     
     @IBOutlet weak var mapView:        MKMapView!
     @IBOutlet weak var collectionView: UICollectionView!
-
+    @IBOutlet weak var newCollectionButton: UIBarButtonItem!
+    
     //MARK: * Actions() *
     
-    @IBAction func refresh(sender: AnyObject) {
-        collectionView.reloadData()
+    @IBAction func makeNewCollection(sender: UIBarButtonItem) {
+        
+        if sender.title == "New Collection"
+        {
+            FlickrClient.sharedInstance().fetchDataForLocation(location: location)
+            collectionView.reloadData()
+        }
+        else
+        {
+            deleteBlurredItems()
+        }
     }
     
     //MARK: * Overrided Functions() *
@@ -63,9 +87,35 @@ extension LocationDetailViewController: UICollectionViewDataSource
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-      let cell = CreateAndConfigureCell(forIndexPath: indexPath)
+        let cell = CreateAndConfigureCell(forIndexPath: indexPath)
+        
         
         return cell
+    }
+}
+
+//MARK: === EXTENSION -> UICollectionViewDelegate ===
+
+extension LocationDetailViewController: UICollectionViewDelegate
+{
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! ItemCell
+        
+        if let index = selectedIndexPaths.indexOf(indexPath)
+        {
+            selectedIndexPaths.removeAtIndex(index)
+            
+            cell.blurView.alpha = 0
+        }
+        else
+        {
+            selectedIndexPaths.append(indexPath)
+            
+            cell.blurView.alpha = 0.7
+        }
+        
+        updateCollectionButton()
     }
 }
 
@@ -78,11 +128,13 @@ extension LocationDetailViewController: NSFetchedResultsControllerDelegate
         switch type
         {
         case .Update:
-            
+            print("Updated")
             updateIndexPaths.append(indexPath!)
             
         case .Delete:
             print("Deleted")
+            
+            deleteIndexPaths.append(indexPath!)
             
         case .Insert:
             print("Inserted")
@@ -95,12 +147,11 @@ extension LocationDetailViewController: NSFetchedResultsControllerDelegate
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         
-        reloadItems()
-    }
+        changeItemsInContent()
+       
+    }    
+    
 }
-
-
-
 
 
 

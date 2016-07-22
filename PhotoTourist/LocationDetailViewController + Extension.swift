@@ -29,10 +29,27 @@ extension LocationDetailViewController
         collectionView.collectionViewLayout = layout
     }
     
+    func deleteBlurredItems() {
+        
+        var array = [ImageForCell]()
+        
+        for item in selectedIndexPaths
+        {
+            array.append(fetchController.objectAtIndexPath(item) as! ImageForCell)
+        }
+        
+        for item in array
+        {
+            managedContext.deleteObject(item)
+        }
+        
+        selectedIndexPaths = [NSIndexPath]()        
+    }
+    
     func registerNibs() {
         
-        let cellNib = UINib(nibName: "ItemCell",        bundle: nil)
-       
+        let cellNib = UINib(nibName: "ItemCell", bundle: nil)
+        
         collectionView.registerNib(cellNib, forCellWithReuseIdentifier: "ItemCell")
     }
     
@@ -40,7 +57,7 @@ extension LocationDetailViewController
         
         let coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
         
-        mapView.setZoomByDelta(0.05, animated: true)
+        //     mapView.setZoomByDelta(0.05, animated: true)
         
         mapView.setCenterCoordinate(coordinate, animated: false)
         
@@ -53,33 +70,36 @@ extension LocationDetailViewController
         indicator.stopAnimating()
     }
     
-    func reloadItems() {
-        
+    func changeItemsInContent() {
         collectionView.performBatchUpdates({
+            
+            for indexPath in self.deleteIndexPaths
+            {
+                self.collectionView.deleteItemsAtIndexPaths([indexPath])
+                
+                self.deleteIndexPaths = [NSIndexPath]()
+            }
             
             for path in self.updateIndexPaths
             {
                 self.collectionView.reloadItemsAtIndexPaths([path])
+                
+                self.updateIndexPaths = [NSIndexPath]()
             }
             
             }, completion: nil)
-    }    
+    }
     
-    func createAndConfigureFetchController() -> NSFetchedResultsController {
+    func updateCollectionButton() {
         
-        let fetchRequest = NSFetchRequest(entityName: "ImageForCell")
-        let predicate    = NSPredicate(format: "location=%@", self.location)
-        
-        fetchRequest.sortDescriptors = []
-        fetchRequest.predicate       = predicate
-        
-        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.sharedInstance().context, sectionNameKeyPath: nil, cacheName: nil)
-        
-        controller.delegate = self
-        
-        try! controller.performFetch()
-        
-        return controller
+        if selectedIndexPaths.count > 0
+        {
+            newCollectionButton.title = "Remove Selected Pictures"
+        }
+        else
+        {
+            newCollectionButton.title = "New Collection"
+        }
     }
     
     func CreateAndConfigureCell(forIndexPath indexPath: NSIndexPath) -> ItemCell {

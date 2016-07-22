@@ -9,11 +9,9 @@
 import UIKit
 
 class ItemCell: UICollectionViewCell
-{
-    @IBOutlet weak var imageView: UIImageView!   
+{    
+    @IBOutlet weak var blurView: UIView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-    }
+    @IBOutlet weak var imageView: UIImageView!   
+   
 }

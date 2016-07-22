@@ -44,7 +44,9 @@ class FlickrClient
             "format": "json",
             "method":"flickr.photos.search",
             "nojsoncallback": "1",
-            "per_page": "15"
+            "per_page": "15",
+            "sort": "relevance"
+//            "geo_context": "2"
         ]
         
         Alamofire.request(.GET, "https://api.flickr.com/services/rest/", parameters: parameters)
@@ -103,6 +105,7 @@ extension FlickrClient
             static let Secret         = "1f31975486556a28"
             static let ResponseFormat = "json"
             static let DisableJSONCB  = "1"
+            
             static let PhotosForLocationMethod = "flickr.photos.geo.photosForLocation"
         }
         
