@@ -57,7 +57,7 @@ extension LocationDetailViewController
         
         let coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
         
-        //     mapView.setZoomByDelta(0.05, animated: true)
+        mapView.setZoomByDelta(0.1, animated: true)
         
         mapView.setCenterCoordinate(coordinate, animated: false)
         
@@ -76,18 +76,37 @@ extension LocationDetailViewController
             for indexPath in self.deleteIndexPaths
             {
                 self.collectionView.deleteItemsAtIndexPaths([indexPath])
-                
-                self.deleteIndexPaths = [NSIndexPath]()
             }
             
-            for path in self.updateIndexPaths
+            for indexPath in self.updateIndexPaths
             {
-                self.collectionView.reloadItemsAtIndexPaths([path])
-                
-                self.updateIndexPaths = [NSIndexPath]()
+                self.collectionView.reloadItemsAtIndexPaths([indexPath])                
             }
             
-            }, completion: nil)
+            for indexPath in self.insertIndexPaths
+            {
+                self.collectionView.insertItemsAtIndexPaths([indexPath])
+            }
+            
+        }) { _ in
+            
+            self.deleteIndexPaths = [NSIndexPath]()
+            self.updateIndexPaths = [NSIndexPath]()
+            self.insertIndexPaths = [NSIndexPath]()
+            
+            self.updateCollectionButton()
+            
+            self.newCollectionButton.enabled = true
+        }
+    }
+    
+    func removeAllItemsForLocation() {
+        
+        for image in fetchController.fetchedObjects as! [ImageForCell]
+        {
+            managedContext.deleteObject(image)
+        }
+        
     }
     
     func updateCollectionButton() {

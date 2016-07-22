@@ -21,6 +21,7 @@ class LocationDetailViewController: UIViewController
     var updateIndexPaths   = [NSIndexPath]()
     var selectedIndexPaths = [NSIndexPath]()
     var deleteIndexPaths   = [NSIndexPath]()
+    var insertIndexPaths   = [NSIndexPath]()
     
     lazy var fetchController: NSFetchedResultsController = {
         
@@ -51,8 +52,11 @@ class LocationDetailViewController: UIViewController
         
         if sender.title == "New Collection"
         {
+            sender.enabled = false
+            
+            removeAllItemsForLocation()
+            
             FlickrClient.sharedInstance().fetchDataForLocation(location: location)
-            collectionView.reloadData()
         }
         else
         {
@@ -67,6 +71,7 @@ class LocationDetailViewController: UIViewController
         
         setupMapViewCenterCoordinate()
         registerNibs()
+        updateCollectionButton()
     }
     
     override func viewDidLayoutSubviews() {
@@ -129,6 +134,7 @@ extension LocationDetailViewController: NSFetchedResultsControllerDelegate
         {
         case .Update:
             print("Updated")
+            
             updateIndexPaths.append(indexPath!)
             
         case .Delete:
@@ -139,6 +145,7 @@ extension LocationDetailViewController: NSFetchedResultsControllerDelegate
         case .Insert:
             print("Inserted")
             
+            insertIndexPaths.append(newIndexPath!)
             
         case .Move:
             print("Moved")
@@ -148,7 +155,6 @@ extension LocationDetailViewController: NSFetchedResultsControllerDelegate
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         
         changeItemsInContent()
-       
     }    
     
 }

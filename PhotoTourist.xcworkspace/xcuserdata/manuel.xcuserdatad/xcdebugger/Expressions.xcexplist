@@ -38,6 +38,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "LocationDetailViewController.makeNewCollection(UIBarButtonItem) -&gt; ():LocationDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "sender.title ">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "LocationDetailViewController.collectionView(UICollectionView, numberOfItemsInSection : Int) -&gt; Int:LocationDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -131,6 +139,14 @@
          <PersistentStrings>
             <PersistentString
                value = "mapView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LocationDetailViewController.removeAllItemsForLocation(Location) -&gt; ():LocationDetailViewController + Extension.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "location.images">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -87,7 +87,7 @@
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="YaR-dx-KJI"/>
-                                    <barButtonItem title="NewCollection" style="plain" id="Wje-Tx-bQF">
+                                    <barButtonItem title="New Collection" style="plain" id="Wje-Tx-bQF">
                                         <connections>
                                             <action selector="makeNewCollection:" destination="6CI-Iv-Now" id="Mut-i1-8a8"/>
                                         </connections>
