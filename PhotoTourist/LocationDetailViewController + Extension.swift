@@ -62,6 +62,10 @@ extension LocationDetailViewController
         mapView.setCenterCoordinate(coordinate, animated: false)
         
         mapView.addAnnotation(location)
+        
+        mapView.zoomEnabled            = false
+        mapView.scrollEnabled          = false
+        mapView.userInteractionEnabled = false
     }
     
     func removeActivityIndicator(indicator: UIActivityIndicatorView) {
@@ -129,6 +133,7 @@ extension LocationDetailViewController
         
         if imageForCell.image != nil
         {
+            print("Added with image")
             cell.imageView.image = imageForCell.image!
             
             removeActivityIndicator(cell.viewWithTag(666) as! UIActivityIndicatorView)
@@ -137,6 +142,7 @@ extension LocationDetailViewController
         {
             if let data = imageForCell.imageData
             {
+                print("Added without image before, image updated")
                 
                 removeActivityIndicator(cell.viewWithTag(666) as! UIActivityIndicatorView)
                 
@@ -145,7 +151,8 @@ extension LocationDetailViewController
                 cell.imageView.image = image
             }
         }
-        
+           
         return cell
+     
     }
 }

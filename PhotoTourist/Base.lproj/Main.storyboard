@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="CZX-qP-7Ak">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="CZX-qP-7Ak">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -78,9 +78,9 @@
                                 </connections>
                             </collectionView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="0lr-Fu-gOv">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="136"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="lzb-uo-g6D"/>
+                                    <constraint firstAttribute="height" constant="136" id="lzb-uo-g6D"/>
                                 </constraints>
                             </mapView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ztd-B0-QfV">
@@ -100,7 +100,7 @@
                         <constraints>
                             <constraint firstItem="9cT-A7-gt2" firstAttribute="top" secondItem="0lr-Fu-gOv" secondAttribute="bottom" constant="4" id="3kk-1x-Nz1"/>
                             <constraint firstAttribute="trailing" secondItem="Ztd-B0-QfV" secondAttribute="trailing" id="40Q-Yi-fYW"/>
-                            <constraint firstItem="0lr-Fu-gOv" firstAttribute="top" secondItem="Iiq-8T-Aga" secondAttribute="top" id="7iU-vK-VGi"/>
+                            <constraint firstItem="0lr-Fu-gOv" firstAttribute="top" secondItem="K4w-Rf-WyA" secondAttribute="bottom" id="4jG-Hb-0ob"/>
                             <constraint firstItem="9cT-A7-gt2" firstAttribute="leading" secondItem="Iiq-8T-Aga" secondAttribute="leading" id="8kL-3q-Cu2"/>
                             <constraint firstItem="Ztd-B0-QfV" firstAttribute="top" secondItem="9cT-A7-gt2" secondAttribute="bottom" id="Eay-aW-pdH"/>
                             <constraint firstItem="0lr-Fu-gOv" firstAttribute="leading" secondItem="Iiq-8T-Aga" secondAttribute="leading" id="W1b-B8-ECD"/>

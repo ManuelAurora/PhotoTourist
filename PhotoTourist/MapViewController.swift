@@ -15,10 +15,13 @@ class MapViewController: UIViewController, MKMapViewDelegate
     
     var managedContext: NSManagedObjectContext!
     
+    var deletingPins: Bool = false
+    
     @IBOutlet weak var mapView: MKMapView!
     
     @IBAction func edit(sender: AnyObject) {
-        
+     
+        deletingPins = !deletingPins
     }
     
     override func viewDidLoad() {
@@ -43,7 +46,17 @@ class MapViewController: UIViewController, MKMapViewDelegate
     }
     
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
-        showDetails(view)
+        
+        if deletingPins
+        {
+            deleteLocationView(view)
+        }
+        else
+        {
+            showDetails(view)
+            mapView.deselectAnnotation(view.annotation!, animated: true)
+        }
+        
     }
     
     func showDetails(annotation: MKAnnotationView) {
@@ -71,6 +84,7 @@ class MapViewController: UIViewController, MKMapViewDelegate
         }
         
     }
+    
     
 }
 

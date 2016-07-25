@@ -25,6 +25,16 @@ extension MapViewController
         mapView.setZoomByDelta(0.4, animated: true)
     }
     
+    func deleteLocationView(view: MKAnnotationView) {
+        
+        let location = view.annotation as! Location
+        
+        mapView.removeAnnotation(location)
+        
+        managedContext.deleteObject(location)
+
+    }
+    
     func getLocation(fromGesture gesture: UIGestureRecognizer) -> Location {
                 
         let touchPoint = gesture.locationInView(mapView!)
