@@ -3,18 +3,18 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "AppDelegate.application(UIApplication, openURL : NSURL, options : [String : AnyObject]) -&gt; Bool:AppDelegate.swift">
+         contextName = "LocationDetailViewController.makeNewCollection(UIBarButtonItem) -&gt; ():LocationDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "url.host">
+               value = "sender.title ">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "LocationDetailViewController.viewDidLoad() -&gt; ():LocationDetailViewController.swift">
+         contextName = "AppDelegate.application(UIApplication, openURL : NSURL, options : [String : AnyObject]) -&gt; Bool:AppDelegate.swift">
          <PersistentStrings>
             <PersistentString
-               value = "location.images.allObjects">
+               value = "url.host">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -38,10 +38,27 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "LocationDetailViewController.makeNewCollection(UIBarButtonItem) -&gt; ():LocationDetailViewController.swift">
+         contextName = "LocationDetailViewController.viewDidLoad() -&gt; ():LocationDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "sender.title ">
+               value = "location.images.allObjects">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LocationDetailViewController.(changeItemsInContent() -&gt; ()).(closure #1):LocationDetailViewController + Extension.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "insertIndexPaths">
+            </PersistentString>
+            <PersistentString
+               value = "deleteIndexPaths">
+            </PersistentString>
+            <PersistentString
+               value = "collectionView.numberOfItemsInSection(0)">
+            </PersistentString>
+            <PersistentString
+               value = "updateIndexPaths">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -73,45 +90,6 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "LocationDetailViewController.collectionView(UICollectionView, cellForItemAtIndexPath : NSIndexPath) -&gt; UICollectionViewCell:LocationDetailViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "location.images.count">
-            </PersistentString>
-            <PersistentString
-               value = "FlickrClient.sharedInstance().total ">
-            </PersistentString>
-            <PersistentString
-               value = "indexPath.row">
-            </PersistentString>
-            <PersistentString
-               value = "imageForCell.url!">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "LocationDetailViewController.viewDidLayoutSubviews() -&gt; ():LocationDetailViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "layout.itemSize">
-            </PersistentString>
-            <PersistentString
-               value = "self.collectionView.frame.size.width">
-            </PersistentString>
-            <PersistentString
-               value = "collectionView.collectionViewLayout">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "LocationDetailViewController.makeMarked(ImageForCell, inCell : ItemCell) -&gt; ():LocationDetailViewController + Extension.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "image.blurred">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "LocationDetailViewController.deleteBlurredItems() -&gt; ():LocationDetailViewController + Extension.swift">
          <PersistentStrings>
             <PersistentString
@@ -132,7 +110,51 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "LocationDetailViewController.viewDidLayoutSubviews() -&gt; ():LocationDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "collectionView.collectionViewLayout">
+            </PersistentString>
+            <PersistentString
+               value = "layout.itemSize">
+            </PersistentString>
+            <PersistentString
+               value = "self.collectionView.frame.size.width">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LocationDetailViewController.makeMarked(ImageForCell, inCell : ItemCell) -&gt; ():LocationDetailViewController + Extension.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "image.blurred">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LocationDetailViewController.collectionView(UICollectionView, cellForItemAtIndexPath : NSIndexPath) -&gt; UICollectionViewCell:LocationDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "location.images.count">
+            </PersistentString>
+            <PersistentString
+               value = "FlickrClient.sharedInstance().total ">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath.row">
+            </PersistentString>
+            <PersistentString
+               value = "imageForCell.url!">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "FlickrClient.(fetchDataForLocation(location : Location) -&gt; ()).(closure #1).(closure #1):FlickrClient.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "set">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "LocationDetailViewController.setupMapViewCenterCoordinate() -&gt; ():LocationDetailViewController + Extension.swift">

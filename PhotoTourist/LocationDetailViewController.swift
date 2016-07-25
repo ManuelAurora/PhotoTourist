@@ -87,7 +87,16 @@ extension LocationDetailViewController: UICollectionViewDataSource
 {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return fetchController.fetchedObjects!.count
+        let sectionInfo = fetchController.sections![section]
+                
+        if sectionInfo.numberOfObjects > 15
+        {
+            return 15
+        }
+        else
+        {
+            return sectionInfo.numberOfObjects
+        }
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -133,17 +142,14 @@ extension LocationDetailViewController: NSFetchedResultsControllerDelegate
         switch type
         {
         case .Update:
-            print("Updated")
-            
+                       
             updateIndexPaths.append(indexPath!)
             
         case .Delete:
-            print("Deleted")
             
             deleteIndexPaths.append(indexPath!)
             
         case .Insert:
-            print("Inserted")
             
             insertIndexPaths.append(newIndexPath!)
             
@@ -155,6 +161,7 @@ extension LocationDetailViewController: NSFetchedResultsControllerDelegate
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         
         changeItemsInContent()
+      
     }    
     
 }

@@ -22,8 +22,10 @@ class FlickrClient
         case NoResults
         case Results
     }
+    
+    
 
-    var total = 0
+    private var total = 0
     
     class func sharedInstance() -> FlickrClient {
         
@@ -44,7 +46,7 @@ class FlickrClient
             "format": "json",
             "method":"flickr.photos.search",
             "nojsoncallback": "1",
-            "per_page": "15",
+            "per_page": "100",
             "sort": "relevance"
 //            "geo_context": "2"
         ]
@@ -60,25 +62,49 @@ class FlickrClient
                 
                 self.total = photosArray.count
                 
+                print(self.total)
+                
                 dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.rawValue), 0)) {
                     
                     let set = NSMutableSet()
                     
-                    for photo in photosArray
-                    {                        
-                        let farm     = photo["farm"]
-                        let serverID = photo["server"]
-                        let id       = photo["id"]
-                        let secret   = photo["secret"]
-                                               
-                        let imageForCell = ImageForCell(withURL: "https://farm\(farm!).staticflickr.com/\(serverID!)/\(id!)_\(secret!)_m.jpg")
-                        
-                        imageForCell.downloadImage()
-                        
-                      set.addObject(imageForCell)
+                    var numberOfItems = 0
+                    
+                    if self.total > 15
+                    {
+                        numberOfItems = 15
+                    }
+                    else
+                    {
+                        numberOfItems = self.total
                     }
                     
-                    location.images = set                    
+                    while set.allObjects.count < numberOfItems
+                    {
+                        let rnd   = Int(arc4random_uniform(UInt32(self.total)))
+                        let dict  = photosArray[rnd]
+                        
+                        var flickrImage = FlickImage(fromDict: dict)
+                        
+                        let urlForImage = "https://farm\(flickrImage.farm!).staticflickr.com/\(flickrImage.serverID!)/\(flickrImage.id!)_\(flickrImage.secret!)_m.jpg"
+                        
+                        for item in set
+                        {
+                            let image = item as! ImageForCell
+                            
+                            if urlForImage == image.url! { flickrImage.used = true }
+                        }
+                        
+                        if !flickrImage.used
+                        {
+                            let imageForCell = ImageForCell(withURL: urlForImage )
+                            
+                            set.addObject(imageForCell)
+                        }
+                    }
+                    
+                    location.images = set
+                    self.downloadImages(forLocation: location)
                 }
         }
     }
@@ -141,7 +167,33 @@ extension FlickrClient
         return "?\(keyValuePairs.joinWithSeparator("&"))"
     }
     
+    func downloadImages(forLocation location: Location) {
+        
+        for element in location.images
+        {
+            let image = element as! ImageForCell
+            
+            image.downloadImage()
+        }
+    }
     
+}
+
+struct FlickImage
+{
+    let farm:     AnyObject?
+    let serverID: AnyObject?
+    let id:       AnyObject?
+    let secret:   AnyObject?
     
+    var used:     Bool = false
+    
+    init(fromDict photo: [String: AnyObject]) {
+        
+        farm     = photo["farm"]
+        serverID = photo["server"]
+        id       = photo["id"]
+        secret   = photo["secret"]
+    }
 }
 

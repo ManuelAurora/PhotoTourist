@@ -82,21 +82,23 @@ extension LocationDetailViewController
                 self.collectionView.deleteItemsAtIndexPaths([indexPath])
             }
             
-            for indexPath in self.updateIndexPaths
-            {
-                self.collectionView.reloadItemsAtIndexPaths([indexPath])                
-            }
+            self.deleteIndexPaths = [NSIndexPath]()
             
             for indexPath in self.insertIndexPaths
             {
                 self.collectionView.insertItemsAtIndexPaths([indexPath])
             }
             
-        }) { _ in
-            
-            self.deleteIndexPaths = [NSIndexPath]()
-            self.updateIndexPaths = [NSIndexPath]()
             self.insertIndexPaths = [NSIndexPath]()
+            
+            for indexPath in self.updateIndexPaths
+            {
+                self.collectionView.reloadItemsAtIndexPaths([indexPath])
+            }
+            
+            self.updateIndexPaths = [NSIndexPath]()
+            
+        }) { _ in
             
             self.updateCollectionButton()
             
@@ -105,9 +107,11 @@ extension LocationDetailViewController
     }
     
     func removeAllItemsForLocation() {
-        
-        for image in fetchController.fetchedObjects as! [ImageForCell]
+    
+        for element in location.images
         {
+            let image = element as! ImageForCell
+            
             managedContext.deleteObject(image)
         }
         
@@ -133,7 +137,6 @@ extension LocationDetailViewController
         
         if imageForCell.image != nil
         {
-            print("Added with image")
             cell.imageView.image = imageForCell.image!
             
             removeActivityIndicator(cell.viewWithTag(666) as! UIActivityIndicatorView)
@@ -141,9 +144,7 @@ extension LocationDetailViewController
         else
         {
             if let data = imageForCell.imageData
-            {
-                print("Added without image before, image updated")
-                
+            {                
                 removeActivityIndicator(cell.viewWithTag(666) as! UIActivityIndicatorView)
                 
                 let image = UIImage(data: data)
