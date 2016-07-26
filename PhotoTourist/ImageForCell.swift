@@ -44,8 +44,6 @@ class ImageForCell: NSManagedObject
                 self.image = image
                 self.imageData = data           
             }
-            
-            try! CoreDataStack.sharedInstance().saveContext()
         }
         
         task.resume()

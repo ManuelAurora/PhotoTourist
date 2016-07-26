@@ -18,14 +18,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="CZX-qP-7Ak">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </mapView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WHz-oX-apP" userLabel="EditMapView">
+                                <rect key="frame" x="0.0" y="536" width="600" height="64"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap Pins To Delete" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="unO-uQ-TA1">
+                                        <rect key="frame" x="0.0" y="21" width="600" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.4144966283844308" blue="0.48657251451718175" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="GrS-WX-Fj2"/>
+                                    <constraint firstAttribute="trailing" secondItem="unO-uQ-TA1" secondAttribute="trailing" id="JhP-jY-kSv"/>
+                                    <constraint firstItem="unO-uQ-TA1" firstAttribute="centerY" secondItem="WHz-oX-apP" secondAttribute="centerY" id="UFR-4K-OBH"/>
+                                    <constraint firstItem="unO-uQ-TA1" firstAttribute="centerX" secondItem="WHz-oX-apP" secondAttribute="centerX" id="YzL-L2-ihb"/>
+                                    <constraint firstItem="unO-uQ-TA1" firstAttribute="leading" secondItem="WHz-oX-apP" secondAttribute="leading" id="nUw-dp-t9m"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="CZX-qP-7Ak" secondAttribute="trailing" id="2zF-RS-AQT"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CZX-qP-7Ak" secondAttribute="bottom" id="Ap2-Su-20Q"/>
+                            <constraint firstAttribute="trailing" secondItem="WHz-oX-apP" secondAttribute="trailing" id="4l3-8u-87S"/>
+                            <constraint firstItem="WHz-oX-apP" firstAttribute="top" secondItem="CZX-qP-7Ak" secondAttribute="bottom" constant="-64" id="A2p-W6-y0p"/>
+                            <constraint firstAttribute="bottom" secondItem="WHz-oX-apP" secondAttribute="bottom" id="Pvv-Jd-sR3"/>
                             <constraint firstItem="CZX-qP-7Ak" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="fVn-Az-nc3"/>
+                            <constraint firstItem="WHz-oX-apP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fqx-e7-Fne"/>
                             <constraint firstItem="CZX-qP-7Ak" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="vPP-sI-wy6"/>
                         </constraints>
                     </view>
@@ -48,6 +70,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="editMapView" destination="WHz-oX-apP" id="gFg-kb-FTr"/>
                         <outlet property="mapView" destination="CZX-qP-7Ak" id="yAq-8Y-fb7"/>
                         <segue destination="6CI-Iv-Now" kind="show" identifier="ShowPhoto" id="QDk-Q0-iyI"/>
                     </connections>

@@ -13,18 +13,6 @@ import OAuthSwift
 
 class FlickrClient
 {
-    var state: State = .NotSearchedYet
-    
-    enum State
-    {
-        case NotSearchedYet
-        case Loading
-        case NoResults
-        case Results
-    }
-    
-    
-
     private var total = 0
     
     class func sharedInstance() -> FlickrClient {
@@ -40,14 +28,14 @@ class FlickrClient
     func fetchDataForLocation(location location: Location) {
         
         let parameters = [
-            "api_key": "79fbcc98d30f49f6334399156b8cf996",
-            "lon": "\(location.longitude)",
-            "lat": "\(location.latitude)",
-            "format": "json",
-            "method":"flickr.photos.search",
-            "nojsoncallback": "1",
-            "per_page": "100",
-            "sort": "relevance"
+            Constants.ParameterKeys.Longitude:      "\(location.longitude)",
+            Constants.ParameterKeys.Latitude:       "\(location.latitude)",
+            Constants.ParameterKeys.APIKey:         Constants.ParameterValues.APIKey,
+            Constants.ParameterKeys.Format:         Constants.ParameterValues.ResponseFormat,
+            Constants.ParameterKeys.Method:         Constants.ParameterValues.PhotosSearchMethod,
+            Constants.ParameterKeys.NoJSONCallback: Constants.ParameterValues.DisableJSONCB,
+            Constants.ParameterKeys.PhotosPerPage:  Constants.ParameterValues.PhotosPerPage,
+            Constants.ParameterKeys.Sort:           Constants.ParameterValues.RelevanceSort
         ]
         
         Alamofire.request(.GET, Constants.APIBaseURL, parameters: parameters)
@@ -83,7 +71,7 @@ class FlickrClient
                         
                         var flickrImage = FlickImage(fromDict: dict)
                         
-                        let urlForImage = "https://farm\(flickrImage.farm!).staticflickr.com/\(flickrImage.serverID!)/\(flickrImage.id!)_\(flickrImage.secret!)_m.jpg"
+                        let urlForImage = flickrImage.makeUrlForImage()
                         
                         for item in set
                         {
@@ -120,6 +108,10 @@ extension FlickrClient
             static let APIKey         = "api_key"
             static let Format         = "format"
             static let NoJSONCallback = "nojsoncallback"
+            static let Longitude      = "lon"
+            static let Latitude       = "lat"
+            static let PhotosPerPage  = "per_page"
+            static let Sort           = "sort"
         }
         
         struct ParameterValues
@@ -128,8 +120,10 @@ extension FlickrClient
             static let Secret         = "1f31975486556a28"
             static let ResponseFormat = "json"
             static let DisableJSONCB  = "1"
+            static let PhotosPerPage  = "100"
+            static let RelevanceSort  = "relevance"
             
-            static let PhotosForLocationMethod = "flickr.photos.geo.photosForLocation"
+            static let PhotosSearchMethod = "flickr.photos.search"
         }
         
         struct ResponseKeys
@@ -145,25 +139,7 @@ extension FlickrClient
             static let OKStatus = "ok"
         }
     }
-    
-    private func escapedParameters(parameters: [String: AnyObject]) -> String {
-        
-        guard !parameters.isEmpty else { return "" }
-        
-        var keyValuePairs = [String]()
-        
-        for (key, value) in parameters
-        {
-            let stringValue = "\(value)"
-            
-            let escapedValue = stringValue.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
-            
-            keyValuePairs.append(key + "=" + "\(escapedValue!)")
-        }
-        
-        return "?\(keyValuePairs.joinWithSeparator("&"))"
-    }
-    
+      
     func downloadImages(forLocation location: Location) {
         
         for element in location.images
@@ -172,10 +148,7 @@ extension FlickrClient
             
             image.downloadImage()
         }
-        
-        
-    }
-    
+    }    
 }
 
 struct FlickImage
@@ -193,6 +166,13 @@ struct FlickImage
         serverID = photo["server"]
         id       = photo["id"]
         secret   = photo["secret"]
+    }
+    
+    func makeUrlForImage() -> String {
+        
+        guard farm != nil && serverID != nil && id != nil && secret != nil else { return "" }
+        
+        return "https://farm\(farm!).staticflickr.com/\(serverID!)/\(id!)_\(secret!)_m.jpg"
     }
 }
 

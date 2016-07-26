@@ -14,18 +14,21 @@ class MapViewController: UIViewController, MKMapViewDelegate
 {
     
     var managedContext: NSManagedObjectContext!
-    
+   
     var deletingPins: Bool = false
     
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var editMapView: UIView!
+    @IBOutlet weak var mapView:     MKMapView!
     
     @IBAction func edit(sender: AnyObject) {
      
-        deletingPins = !deletingPins
+        toggleDeletion()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mapView.setZoomByDelta(0.7, animated: true)
         
         let locations = fetchLocations()
         
@@ -84,9 +87,7 @@ class MapViewController: UIViewController, MKMapViewDelegate
         {
             animateAnnotation(annotation)
         }
-        
     }
-    
     
 }
 

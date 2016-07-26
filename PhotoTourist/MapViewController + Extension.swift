@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import MapKit
+import CoreGraphics
 
 extension MapViewController
 {
@@ -33,6 +34,17 @@ extension MapViewController
         mapView.setZoomByDelta(0.4, animated: true)
     }
     
+    func toggleDeletion() {
+        
+        deletingPins = !deletingPins
+        
+        UIView.transitionWithView(editMapView, duration: 0.5, options: .TransitionCrossDissolve, animations: {
+            
+            self.editMapView.hidden = !self.deletingPins
+            
+            }, completion: nil)        
+    }
+    
     func deleteLocationView(view: MKAnnotationView) {
         
         let location = view.annotation as! Location
@@ -40,7 +52,6 @@ extension MapViewController
         mapView.removeAnnotation(location)
         
         managedContext.deleteObject(location)
-
     }
     
     func getLocation(fromGesture gesture: UIGestureRecognizer) -> Location {
