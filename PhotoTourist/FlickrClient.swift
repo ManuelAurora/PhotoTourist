@@ -48,10 +48,9 @@ class FlickrClient
             "nojsoncallback": "1",
             "per_page": "100",
             "sort": "relevance"
-//            "geo_context": "2"
         ]
         
-        Alamofire.request(.GET, "https://api.flickr.com/services/rest/", parameters: parameters)
+        Alamofire.request(.GET, Constants.APIBaseURL, parameters: parameters)
             .validate(statusCode: 200..<300)
             .validate()
             .responseJSON { (response) in
@@ -61,8 +60,6 @@ class FlickrClient
                 let photosArray = result["photos"]!["photo"] as! [[String: AnyObject]]
                 
                 self.total = photosArray.count
-                
-                print(self.total)
                 
                 dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.rawValue), 0)) {
                     
@@ -175,6 +172,8 @@ extension FlickrClient
             
             image.downloadImage()
         }
+        
+        
     }
     
 }

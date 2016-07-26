@@ -11,7 +11,15 @@ import CoreData
 import MapKit
 
 extension MapViewController
-{    
+{
+    func centerMapView() {
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        
+        mapView.centerCoordinate.latitude  = userDefaults.doubleForKey("Latitude")
+        mapView.centerCoordinate.longitude = userDefaults.doubleForKey("Longitude")
+    }
+    
     func addGestures() {
         
         let pressureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handlePressure))

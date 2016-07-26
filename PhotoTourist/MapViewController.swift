@@ -31,7 +31,9 @@ class MapViewController: UIViewController, MKMapViewDelegate
         
         mapView.addAnnotations(locations)
         
-        addGestures()        
+        addGestures()
+        
+        centerMapView()
     }
     
     func handlePressure(gestureRecognizer: UIGestureRecognizer) {        
