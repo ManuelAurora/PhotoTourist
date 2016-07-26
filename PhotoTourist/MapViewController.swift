@@ -12,18 +12,25 @@ import CoreData
 
 class MapViewController: UIViewController, MKMapViewDelegate
 {
+    //MARK: * Variables *
     
     var managedContext: NSManagedObjectContext!
    
     var deletingPins: Bool = false
     
+    //MARK: * Outlets *
+    
     @IBOutlet weak var editMapView: UIView!
     @IBOutlet weak var mapView:     MKMapView!
+    
+    //MARK: * Actions() *
     
     @IBAction func edit(sender: AnyObject) {
      
         toggleDeletion()
     }
+    
+    //MARK: * Overrided Functions() *
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +45,8 @@ class MapViewController: UIViewController, MKMapViewDelegate
         
         centerMapView()
     }
+    
+    //MARK: * Functions() *
     
     func handlePressure(gestureRecognizer: UIGestureRecognizer) {        
         
@@ -69,24 +78,26 @@ class MapViewController: UIViewController, MKMapViewDelegate
         performSegueWithIdentifier("ShowPhoto", sender: annotation)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        let annotationView = sender as! MKAnnotationView
-        
-        let location = annotationView.annotation as! Location
-       
-        let controller = segue.destinationViewController as! LocationDetailViewController
-        
-        controller.location       = location
-        controller.managedContext = managedContext        
-    }
-    
     func mapView(mapView: MKMapView, didAddAnnotationViews views: [MKAnnotationView]) {        
         
         for annotation in views
         {
             animateAnnotation(annotation)
         }
+    }
+    
+    //MARK: * Segues *
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        let annotationView = sender as! MKAnnotationView
+        
+        let location = annotationView.annotation as! Location
+        
+        let controller = segue.destinationViewController as! LocationDetailViewController
+        
+        controller.location       = location
+        controller.managedContext = managedContext
     }
     
 }

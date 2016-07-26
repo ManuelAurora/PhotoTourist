@@ -61,8 +61,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         userDefaults.setDouble(mapView.centerCoordinate.latitude,  forKey: "Latitude")
         userDefaults.setDouble(mapView.centerCoordinate.longitude, forKey: "Longitude")
-        
-        
+        userDefaults.setDouble(mapView.region.span.latitudeDelta,  forKey: "LatDelta")
+        userDefaults.setDouble(mapView.region.span.longitudeDelta, forKey: "LonDelta")        
     }
 
     func applicationWillEnterForeground(application: UIApplication) {

@@ -17,8 +17,15 @@ extension MapViewController
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
         
-        mapView.centerCoordinate.latitude  = userDefaults.doubleForKey("Latitude")
-        mapView.centerCoordinate.longitude = userDefaults.doubleForKey("Longitude")
+        let latitude  = userDefaults.doubleForKey("Latitude")
+        let longitude = userDefaults.doubleForKey("Longitude")
+        
+        let span      = MKCoordinateSpan(latitudeDelta:  userDefaults.doubleForKey("LatDelta"),
+                                         longitudeDelta: userDefaults.doubleForKey("LonDelta"))
+        
+        let loadedRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: span)
+        
+        mapView.setRegion(loadedRegion, animated: false)       
     }
     
     func addGestures() {
