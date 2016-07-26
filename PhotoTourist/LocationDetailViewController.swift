@@ -87,6 +87,8 @@ extension LocationDetailViewController: UICollectionViewDataSource
 {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
+        //TODO: NEED TO FIX BUG WITH THESE! 
+        
         let sectionInfo = fetchController.sections![section]
                 
         if sectionInfo.numberOfObjects > 15

@@ -15,7 +15,7 @@ class ImageForCell: NSManagedObject
     @NSManaged var url:   String?
     
     var image: UIImage?
-    
+    var status: String = "Downloading"
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
@@ -42,7 +42,9 @@ class ImageForCell: NSManagedObject
             if let data = data, let image = UIImage(data: data)
             {
                 self.image = image
-                self.imageData = data           
+                self.imageData = data
+                
+                self.status = "Done"
             }
         }
         
