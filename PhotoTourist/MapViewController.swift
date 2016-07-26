@@ -16,12 +16,13 @@ class MapViewController: UIViewController, MKMapViewDelegate
     
     var managedContext: NSManagedObjectContext!
    
-    var deletingPins: Bool = false
-    
+    var deletingPins: Bool = false    
+  
     //MARK: * Outlets *
     
-    @IBOutlet weak var editMapView: UIView!
-    @IBOutlet weak var mapView:     MKMapView!
+    @IBOutlet weak var editDoneButton: UIButton!
+    @IBOutlet weak var editMapView:    UIView!
+    @IBOutlet weak var mapView:        MKMapView!
     
     //MARK: * Actions() *
     

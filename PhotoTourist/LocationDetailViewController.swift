@@ -101,8 +101,7 @@ extension LocationDetailViewController: UICollectionViewDataSource
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = CreateAndConfigureCell(forIndexPath: indexPath)
-        
+        let cell = CreateAndConfigureCell(forIndexPath: indexPath)        
         
         return cell
     }
@@ -162,6 +161,7 @@ extension LocationDetailViewController: NSFetchedResultsControllerDelegate
         
         changeItemsInContent()
       
+        try! CoreDataStack.sharedInstance().saveContext()
     }    
     
 }

@@ -49,6 +49,10 @@ extension MapViewController
             
             self.editMapView.hidden = !self.deletingPins
             
+            let title = self.deletingPins ? "Done" : "Edit"
+            
+            self.editDoneButton.setTitle(title, forState: .Normal)
+            
             }, completion: nil)        
     }
     

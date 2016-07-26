@@ -70,6 +70,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="editDoneButton" destination="B8t-G9-Hrr" id="d8Y-ew-NxE"/>
                         <outlet property="editMapView" destination="WHz-oX-apP" id="gFg-kb-FTr"/>
                         <outlet property="mapView" destination="CZX-qP-7Ak" id="yAq-8Y-fb7"/>
                         <segue destination="6CI-Iv-Now" kind="show" identifier="ShowPhoto" id="QDk-Q0-iyI"/>
