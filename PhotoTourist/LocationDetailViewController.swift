@@ -78,6 +78,19 @@ class LocationDetailViewController: UIViewController
         
         makeCustomLayout()
     }
+    
+    deinit{
+        
+        do
+        {
+            try managedContext.save()
+        }
+        catch
+        {
+            print("Error saving context")
+        }
+        
+    }
 }
 
 //MARK: === EXTENSION -> UICollectionViewDataSource ===
