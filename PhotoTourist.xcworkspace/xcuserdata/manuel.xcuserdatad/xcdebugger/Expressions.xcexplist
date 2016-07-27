@@ -243,6 +243,9 @@
             <PersistentString
                value = "location.images.count">
             </PersistentString>
+            <PersistentString
+               value = "label.hidden">
+            </PersistentString>
          </PersistentStrings>
       </ContextState>
    </ContextStates>

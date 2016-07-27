@@ -129,6 +129,14 @@ extension LocationDetailViewController
         if !newCollectionButton.enabled { enableCollectionButton() }
     }
     
+    func hideLabel(notHaveItems: Bool) {
+        
+        let label = view.viewWithTag(555) as! UILabel
+        
+        label.hidden = !notHaveItems
+        
+    }
+    
     func enableCollectionButton() {
         
         var counter = 0

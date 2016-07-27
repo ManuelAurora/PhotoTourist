@@ -100,7 +100,9 @@ extension LocationDetailViewController: UICollectionViewDataSource
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         let sectionInfo = fetchController.sections![section]
-                
+        
+        hideLabel(sectionInfo.numberOfObjects == 0)
+        
         if sectionInfo.numberOfObjects > 15
         {
             return 15
