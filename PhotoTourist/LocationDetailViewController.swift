@@ -12,7 +12,6 @@ import MapKit
 
 class LocationDetailViewController: UIViewController
 {
-    
     //MARK: * Variables *
     
     var location:       Location!
@@ -101,7 +100,7 @@ extension LocationDetailViewController: UICollectionViewDataSource
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = CreateAndConfigureCell(forIndexPath: indexPath)        
+        let cell = CreateAndConfigureCell(forIndexPath: indexPath)
         
         return cell
     }
@@ -159,7 +158,8 @@ extension LocationDetailViewController: NSFetchedResultsControllerDelegate
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         
-        changeItemsInContent()            
+        changeItemsInContent()
+        
     }    
     
 }

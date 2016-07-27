@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 import Alamofire
-import OAuthSwift
 
 class FlickrClient
 {

@@ -12,10 +12,12 @@ import CoreData
 class ImageForCell: NSManagedObject
 {
     @NSManaged var imageData: NSData?
-    @NSManaged var url:   String?
-    @NSManaged var location: Location?
+    @NSManaged var url:       String?
+    @NSManaged var location:  Location?
     
-    var image: UIImage?    
+    var image: UIImage?
+    
+    var loaded: Bool = false
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
@@ -42,8 +44,9 @@ class ImageForCell: NSManagedObject
             
             if let data = data, let image = UIImage(data: data)
             {
-                self.image = image
-                self.imageData = data           
+                self.image     = image
+                self.imageData = data
+                self.loaded    = true
             }
         }
         

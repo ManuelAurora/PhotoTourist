@@ -75,46 +75,44 @@ extension LocationDetailViewController
     }
     
     func changeItemsInContent() {
-        collectionView.performBatchUpdates({
-            
-            for indexPath in self.deleteIndexPaths
-            {
-                self.collectionView.deleteItemsAtIndexPaths([indexPath])
+        
+            collectionView.performBatchUpdates({
+                
+                for indexPath in self.deleteIndexPaths
+                {
+                    self.collectionView.deleteItemsAtIndexPaths([indexPath])
+                }
+                
+                self.deleteIndexPaths = [NSIndexPath]()
+                
+                for indexPath in self.insertIndexPaths
+                {
+                    self.collectionView.insertItemsAtIndexPaths([indexPath])
+                }
+                
+                self.insertIndexPaths = [NSIndexPath]()
+                
+                for indexPath in self.updateIndexPaths
+                {
+                    self.collectionView.reloadItemsAtIndexPaths([indexPath])
+                }
+                
+                self.updateIndexPaths = [NSIndexPath]()
+                
+            }) { _ in
+                
+                self.updateCollectionButton()
             }
-            
-            self.deleteIndexPaths = [NSIndexPath]()
-            
-            for indexPath in self.insertIndexPaths
-            {
-                self.collectionView.insertItemsAtIndexPaths([indexPath])
-            }
-            
-            self.insertIndexPaths = [NSIndexPath]()
-            
-            for indexPath in self.updateIndexPaths
-            {
-                self.collectionView.reloadItemsAtIndexPaths([indexPath])
-            }
-            
-            self.updateIndexPaths = [NSIndexPath]()
-            
-        }) { _ in
-            
-            self.updateCollectionButton()
-            
-            self.newCollectionButton.enabled = true
-        }
     }
     
     func removeAllItemsForLocation() {
-    
+        
         for element in location.images
         {
             let image = element as! ImageForCell
             
             managedContext.deleteObject(image)
-        }
-        
+        }        
     }
     
     func updateCollectionButton() {
@@ -127,6 +125,22 @@ extension LocationDetailViewController
         {
             newCollectionButton.title = "New Collection"
         }
+        
+        if !newCollectionButton.enabled { enableCollectionButton() }
+    }
+    
+    func enableCollectionButton() {
+        
+        var counter = 0
+        
+        for image in location.images
+        {
+            let image = image as! ImageForCell
+            
+            if image.loaded { counter += 1 }
+        }
+        
+        if counter == location.images.count { newCollectionButton.enabled = true }
     }
     
     func CreateAndConfigureCell(forIndexPath indexPath: NSIndexPath) -> ItemCell {
@@ -150,6 +164,8 @@ extension LocationDetailViewController
                 let image = UIImage(data: data)
                 
                 cell.imageView.image = image
+                
+                imageForCell.loaded = true
             }
         }
            

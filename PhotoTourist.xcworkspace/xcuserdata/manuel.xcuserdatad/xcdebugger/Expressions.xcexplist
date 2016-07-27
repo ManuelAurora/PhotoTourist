@@ -145,6 +145,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "LocationDetailViewController.enableCollectionButton() -&gt; ():LocationDetailViewController + Extension.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "location.images.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "LocationDetailViewController.viewWillAppear(Bool) -&gt; ():LocationDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -167,10 +175,10 @@
          contextName = "LocationDetailViewController.viewDidLayoutSubviews() -&gt; ():LocationDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "layout.itemSize">
+               value = "self.collectionView.frame.size.width">
             </PersistentString>
             <PersistentString
-               value = "self.collectionView.frame.size.width">
+               value = "layout.itemSize">
             </PersistentString>
             <PersistentString
                value = "collectionView.collectionViewLayout">
@@ -199,6 +207,14 @@
          <PersistentStrings>
             <PersistentString
                value = "set">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LocationDetailViewController.removeAllItemsForLocation() -&gt; ():LocationDetailViewController + Extension.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "location.images.count">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

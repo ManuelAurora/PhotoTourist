@@ -93,7 +93,7 @@ extension MapViewController
         
         let location = Location(withCoordinate: touchCoordinate)
         
-        try! CoreDataStack.sharedInstance().saveContext()
+        try! managedContext.save()
         
         return location
     }

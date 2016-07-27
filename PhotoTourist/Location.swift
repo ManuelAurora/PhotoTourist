@@ -13,7 +13,7 @@ import CoreData
 
 class Location: NSManagedObject, MKAnnotation
 {
-    @NSManaged var images: NSSet
+    @NSManaged var images:    NSSet
     @NSManaged var longitude: Double
     @NSManaged var latitude:  Double
     
