@@ -15,17 +15,37 @@ extension MapViewController
 {
     func centerMapView() {
         
+        if wasLaunched() == true
+        {
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            
+            let latitude  = userDefaults.doubleForKey("Latitude")
+            let longitude = userDefaults.doubleForKey("Longitude")
+            
+            let span      = MKCoordinateSpan(latitudeDelta:  userDefaults.doubleForKey("LatDelta"),
+                                             longitudeDelta: userDefaults.doubleForKey("LonDelta"))
+            
+            let loadedRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: span)
+            
+            mapView.setRegion(loadedRegion, animated: false)            
+        }
+        else
+        {
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            
+            let region = mapView.regionThatFits(MKCoordinateRegionMakeWithDistance(mapView.userLocation.coordinate, 10000000, 10000000))
+            
+            mapView.setRegion(region, animated: true)
+            
+            userDefaults.setBool(true, forKey: "FirstLaunch")
+        }
+    }
+    
+    func wasLaunched() -> Bool {
+        
         let userDefaults = NSUserDefaults.standardUserDefaults()
         
-        let latitude  = userDefaults.doubleForKey("Latitude")
-        let longitude = userDefaults.doubleForKey("Longitude")
-        
-        let span      = MKCoordinateSpan(latitudeDelta:  userDefaults.doubleForKey("LatDelta"),
-                                         longitudeDelta: userDefaults.doubleForKey("LonDelta"))
-        
-        let loadedRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: span)
-        
-        mapView.setRegion(loadedRegion, animated: false)       
+        return userDefaults.boolForKey("FirstLaunch")        
     }
     
     func addGestures() {
@@ -73,7 +93,7 @@ extension MapViewController
         
         let location = Location(withCoordinate: touchCoordinate)
         
-        try! managedContext.save()
+        try! CoreDataStack.sharedInstance().saveContext()
         
         return location
     }

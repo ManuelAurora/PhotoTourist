@@ -27,11 +27,10 @@ class Location: NSManagedObject, MKAnnotation
     
     convenience init(withCoordinate: CLLocationCoordinate2D) {
         
-        let context = CoreDataStack.sharedInstance().context
-        
-        let entity = NSEntityDescription.entityForName("Location", inManagedObjectContext: context )
+        let entity = NSEntityDescription.entityForName("Location", inManagedObjectContext: CoreDataStack.sharedInstance().context)
     
-        self.init(entity: entity!, insertIntoManagedObjectContext: context)             
+        self.init(entity: entity!, insertIntoManagedObjectContext: CoreDataStack.sharedInstance().context)
+             
         
         longitude = withCoordinate.longitude
         latitude  = withCoordinate.latitude

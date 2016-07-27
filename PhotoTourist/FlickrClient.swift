@@ -51,7 +51,7 @@ class FlickrClient
                 
                 dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.rawValue), 0)) {
                     
-                    let set = NSMutableSet()
+                    var array = [ImageForCell]()
                     
                     var numberOfItems = 0
                     
@@ -64,7 +64,7 @@ class FlickrClient
                         numberOfItems = self.total
                     }
                     
-                    while set.allObjects.count < numberOfItems
+                    while array.count < numberOfItems
                     {
                         let rnd   = Int(arc4random_uniform(UInt32(self.total)))
                         let dict  = photosArray[rnd]
@@ -73,22 +73,21 @@ class FlickrClient
                         
                         let urlForImage = flickrImage.makeUrlForImage()
                         
-                        for item in set
+                        for item in array
                         {
-                            let image = item as! ImageForCell
+                            let image = item
                             
                             if urlForImage == image.url! { flickrImage.used = true }
                         }
                         
                         if !flickrImage.used
                         {
-                            let imageForCell = ImageForCell(withURL: urlForImage )
+                            let imageForCell = ImageForCell(withURL: urlForImage, forLocation: location)
                             
-                            set.addObject(imageForCell)
+                            array.append(imageForCell)
                         }
-                    }
-                    
-                    location.images = set
+                    }                   
+                 
                     self.downloadImages(forLocation: location)
                 }
         }

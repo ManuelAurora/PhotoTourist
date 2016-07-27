@@ -3,14 +3,6 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "MapViewController.edit(AnyObject) -&gt; ():MapViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "editMapView.frame.origin.y">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "AppDelegate.application(UIApplication, openURL : NSURL, options : [String : AnyObject]) -&gt; Bool:AppDelegate.swift">
          <PersistentStrings>
             <PersistentString
@@ -19,10 +11,80 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "LocationDetailViewController.setupMapViewCenterCoordinate() -&gt; ():LocationDetailViewController + Extension.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "mapView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "LocationDetailViewController.makeNewCollection(UIBarButtonItem) -&gt; ():LocationDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "sender.title ">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.viewDidLoad() -&gt; ():MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "editMapView.frame.origin.y">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AppDelegate.applicationDidEnterBackground(UIApplication) -&gt; ():AppDelegate.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "mapView.centerCoordinate.latitude">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.edit(AnyObject) -&gt; ():MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "editMapView.frame.origin.y">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.(toggleDeletion() -&gt; ()).(closure #2):MapViewController + Extension.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.editMapView == true ">
+            </PersistentString>
+            <PersistentString
+               value = "editButton.title">
+            </PersistentString>
+            <PersistentString
+               value = "self.deletingPins">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.locationManager(CLLocationManager, didChangeAuthorizationStatus : CLAuthorizationStatus) -&gt; ():MapViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentUsersLocation">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LocationDetailViewController.viewDidLoad() -&gt; ():LocationDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "location.images.allObjects">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.(fetchDataForLocation(location : Location) -&gt; ()).(closure #1):MapModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "location.images">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -44,25 +106,6 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "LocationDetailViewController.viewWillAppear(Bool) -&gt; ():LocationDetailViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "location.images.allObjects[0] as! ImageForCell">
-            </PersistentString>
-            <PersistentString
-               value = "location.imageData!">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "LocationDetailViewController.viewDidLoad() -&gt; ():LocationDetailViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "location.images.allObjects">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "LocationDetailViewController.(controllerDidChangeContent(NSFetchedResultsController) -&gt; ()).(closure #1):LocationDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -71,51 +114,13 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MapViewController.viewDidLoad() -&gt; ():MapViewController.swift">
+         contextName = "MapViewController.centerMapView() -&gt; ():MapViewController + Extension.swift">
          <PersistentStrings>
             <PersistentString
-               value = "editMapView.frame.origin.y">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "LocationDetailViewController.collectionView(UICollectionView, numberOfItemsInSection : Int) -&gt; Int:LocationDetailViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "fetchController.fetchedObjects!.count">
+               value = "wasLaunched()">
             </PersistentString>
             <PersistentString
-               value = "location.images.count">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MapViewController.(fetchDataForLocation(location : Location) -&gt; ()).(closure #1):MapModel.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "location.images">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MapViewController.prepareForSegue(UIStoryboardSegue, sender : AnyObject?) -&gt; ():MapViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "location.images.count">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MapViewController.(toggleDeletion() -&gt; ()).(closure #2):MapViewController + Extension.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.editMapView == true ">
-            </PersistentString>
-            <PersistentString
-               value = "editButton.title">
-            </PersistentString>
-            <PersistentString
-               value = "self.deletingPins">
+               value = "checkFirstLaunch()">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -140,24 +145,35 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "LocationDetailViewController.viewDidLayoutSubviews() -&gt; ():LocationDetailViewController.swift">
+         contextName = "LocationDetailViewController.viewWillAppear(Bool) -&gt; ():LocationDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.collectionView.frame.size.width">
+               value = "location.images.allObjects[0] as! ImageForCell">
             </PersistentString>
             <PersistentString
-               value = "layout.itemSize">
-            </PersistentString>
-            <PersistentString
-               value = "collectionView.collectionViewLayout">
+               value = "location.imageData!">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "LocationDetailViewController.makeMarked(ImageForCell, inCell : ItemCell) -&gt; ():LocationDetailViewController + Extension.swift">
+         contextName = "MapViewController.prepareForSegue(UIStoryboardSegue, sender : AnyObject?) -&gt; ():MapViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "image.blurred">
+               value = "location.images.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LocationDetailViewController.viewDidLayoutSubviews() -&gt; ():LocationDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "layout.itemSize">
+            </PersistentString>
+            <PersistentString
+               value = "self.collectionView.frame.size.width">
+            </PersistentString>
+            <PersistentString
+               value = "collectionView.collectionViewLayout">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -187,18 +203,29 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "LocationDetailViewController.setupMapViewCenterCoordinate() -&gt; ():LocationDetailViewController + Extension.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "mapView">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "LocationDetailViewController.removeAllItemsForLocation(Location) -&gt; ():LocationDetailViewController + Extension.swift">
          <PersistentStrings>
             <PersistentString
                value = "location.images">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LocationDetailViewController.makeMarked(ImageForCell, inCell : ItemCell) -&gt; ():LocationDetailViewController + Extension.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "image.blurred">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LocationDetailViewController.collectionView(UICollectionView, numberOfItemsInSection : Int) -&gt; Int:LocationDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "fetchController.fetchedObjects!.count">
+            </PersistentString>
+            <PersistentString
+               value = "location.images.count">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

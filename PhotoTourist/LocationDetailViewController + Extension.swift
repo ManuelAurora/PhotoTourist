@@ -100,7 +100,9 @@ extension LocationDetailViewController
             
         }) { _ in
             
-            self.updateCollectionButton()            
+            self.updateCollectionButton()
+            
+            self.newCollectionButton.enabled = true
         }
     }
     

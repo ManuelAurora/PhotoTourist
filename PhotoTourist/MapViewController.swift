@@ -16,7 +16,7 @@ class MapViewController: UIViewController, MKMapViewDelegate
     
     var managedContext: NSManagedObjectContext!
    
-    var deletingPins: Bool = false    
+    var deletingPins: Bool = false       
   
     //MARK: * Outlets *
     
@@ -32,11 +32,9 @@ class MapViewController: UIViewController, MKMapViewDelegate
     }
     
     //MARK: * Overrided Functions() *
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        mapView.setZoomByDelta(0.7, animated: true)
         
         let locations = fetchLocations()
         
@@ -86,6 +84,7 @@ class MapViewController: UIViewController, MKMapViewDelegate
             animateAnnotation(annotation)
         }
     }
+    
     
     //MARK: * Segues *
     

@@ -13,21 +13,22 @@ class ImageForCell: NSManagedObject
 {
     @NSManaged var imageData: NSData?
     @NSManaged var url:   String?
+    @NSManaged var location: Location?
     
-    var image: UIImage?
-    var status: String = "Downloading"
+    var image: UIImage?    
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
     
-    convenience init(withURL url: String) {
+    convenience init(withURL url: String, forLocation location: Location) {
         
         let entity = NSEntityDescription.entityForName("ImageForCell", inManagedObjectContext: CoreDataStack.sharedInstance().context)
         
         self.init(entity: entity!, insertIntoManagedObjectContext: CoreDataStack.sharedInstance().context)
         
-        self.url = url
+        self.location = location
+        self.url      = url
     }
     
     func downloadImage() {
@@ -42,9 +43,7 @@ class ImageForCell: NSManagedObject
             if let data = data, let image = UIImage(data: data)
             {
                 self.image = image
-                self.imageData = data
-                
-                self.status = "Done"
+                self.imageData = data           
             }
         }
         

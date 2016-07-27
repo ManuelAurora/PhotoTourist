@@ -29,29 +29,29 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PhotoTourist/AppDelegate.swift"
-            timestampString = "491234793.466385"
+            filePath = "PhotoTourist/LocationDetailViewController.swift"
+            timestampString = "491243903.61218"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "applicationWillTerminate(_:)"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "collectionView(_:cellForItemAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PhotoTourist/LocationDetailViewController.swift"
-            timestampString = "491246869.533532"
+            filePath = "PhotoTourist/MapViewController + Extension.swift"
+            timestampString = "491318256.077093"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
-            landmarkName = "controllerDidChangeContent(_:)"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "centerMapView()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
