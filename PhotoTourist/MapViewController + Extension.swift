@@ -33,9 +33,14 @@ extension MapViewController
         {
             let userDefaults = NSUserDefaults.standardUserDefaults()
             
-            let region = mapView.regionThatFits(MKCoordinateRegionMakeWithDistance(mapView.userLocation.coordinate, 10000000, 10000000))
+            let location = CLLocationCoordinate2D(
+                latitude: 31.237789,
+                longitude: -88.803721
+            )
             
-            mapView.setRegion(region, animated: true)
+            let span = MKCoordinateSpanMake(80, 80)
+            let region = MKCoordinateRegion(center: location, span: span)
+            self.mapView.setRegion(region, animated: true)
             
             userDefaults.setBool(true, forKey: "FirstLaunch")
         }
