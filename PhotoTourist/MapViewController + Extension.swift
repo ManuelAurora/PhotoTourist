@@ -92,6 +92,8 @@ extension MapViewController
         let touchCoordinate = mapView.convertPoint(touchPoint, toCoordinateFromView: mapView!)
         
         let location = Location(withCoordinate: touchCoordinate)
+        
+        try! managedContext.save()
                  
         return location
     }

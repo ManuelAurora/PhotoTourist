@@ -44,9 +44,12 @@ class ImageForCell: NSManagedObject
             
             if let data = data, let image = UIImage(data: data)
             {
-                self.image     = image
-                self.imageData = data
-                self.loaded    = true
+                dispatch_async(dispatch_get_main_queue(), { 
+                    self.image     = image
+                    self.imageData = data
+                    self.loaded    = true
+
+                })
             }
         }
         

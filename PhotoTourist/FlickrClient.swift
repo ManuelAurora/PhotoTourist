@@ -66,12 +66,15 @@ class FlickrClient
                         
                         let urlForImage = flickrImage.makeUrlForImage()
                         
-                        let imageForCell = ImageForCell(withURL: urlForImage, forLocation: location)
-                        
-                        try! CoreDataStack.sharedInstance().saveContext()
-                        
-                        imageForCell.downloadImage()                        
+                        dispatch_async(dispatch_get_main_queue(), {
+                            
+                            _ = ImageForCell(withURL: urlForImage, forLocation: location)
+                            
+                            try! CoreDataStack.sharedInstance().saveContext()
+                        })
                     }
+                    
+                    self.downloadImages()
                 }
         }
     }
@@ -82,58 +85,23 @@ class FlickrClient
         
         guard currentLocation == location else { page = 1; return }
         
-        if page < totalPages
-        {
-            page += 1
-        }
+        if page < totalPages { page += 1 }
+        else                 { page  = 1 }
     }
-}
-
-
-extension FlickrClient
-{
-    struct Constants
-    {
-        static let APIBaseURL = "https://api.flickr.com/services/rest/"
-        static let AuthURL    = "https://www.flickr.com/auth-72157670737850785"
+    
+    func downloadImages() {
         
-        struct ParameterKeys
-        {
-            static let Method         = "method"
-            static let APIKey         = "api_key"
-            static let Format         = "format"
-            static let NoJSONCallback = "nojsoncallback"
-            static let Longitude      = "lon"
-            static let Latitude       = "lat"
-            static let PhotosPerPage  = "per_page"
-            static let Sort           = "sort"
-            static let Page           = "page"
-        }
+        guard let currentLocation = currentLocation else { return }
         
-        struct ParameterValues
-        {
-            static let APIKey         = "79fbcc98d30f49f6334399156b8cf996"
-            static let Secret         = "1f31975486556a28"
-            static let ResponseFormat = "json"
-            static let DisableJSONCB  = "1"
-            static let PhotosPerPage  = "15"
-            static let RelevanceSort  = "relevance"
+        dispatch_async(dispatch_get_main_queue(), {
             
-            static let PhotosSearchMethod = "flickr.photos.search"
-        }
-        
-        struct ResponseKeys
-        {
-            static let Status = "stat"
-            static let Photos = "photos"
-            static let Photo  = "photo"
-            static let Title  = "title"
-        }
-        
-        struct ResponseValues
-        {
-            static let OKStatus = "ok"
-        }
+            for element in currentLocation.images
+            {
+                let image = element as! ImageForCell
+                
+                image.downloadImage()
+            }
+        })
     }
 }
 
