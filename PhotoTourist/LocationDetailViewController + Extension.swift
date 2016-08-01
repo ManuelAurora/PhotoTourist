@@ -43,6 +43,8 @@ extension LocationDetailViewController
             managedContext.deleteObject(item)
         }
         
+        try! managedContext.save()
+        
         selectedIndexPaths = [NSIndexPath]()        
     }
     
@@ -131,9 +133,7 @@ extension LocationDetailViewController
     
     func hideLabel(notHaveItems: Bool) {
         
-        let label = view.viewWithTag(555) as! UILabel
-        
-        label.hidden = !notHaveItems
+        noImagesLabel.hidden = !notHaveItems
         
     }
     
@@ -161,13 +161,13 @@ extension LocationDetailViewController
         {
             cell.imageView.image = imageForCell.image!
             
-            removeActivityIndicator(cell.viewWithTag(666) as! UIActivityIndicatorView)
+            removeActivityIndicator(cell.activityIndicator)
         }
         else
         {
             if let data = imageForCell.imageData
             {                
-                removeActivityIndicator(cell.viewWithTag(666) as! UIActivityIndicatorView)
+                removeActivityIndicator(cell.activityIndicator)
                 
                 let image = UIImage(data: data)
                 

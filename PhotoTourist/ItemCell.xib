@@ -42,6 +42,7 @@
             </constraints>
             <size key="customSize" width="227" height="186"/>
             <connections>
+                <outlet property="activityIndicator" destination="A55-xP-hrJ" id="fFw-tK-Azi"/>
                 <outlet property="blurView" destination="1OV-qg-5ak" id="MRE-vo-LMZ"/>
                 <outlet property="imageView" destination="ffv-mC-kKj" id="wnC-on-y0D"/>
             </connections>

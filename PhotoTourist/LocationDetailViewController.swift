@@ -41,8 +41,10 @@ class LocationDetailViewController: UIViewController
     
     //MARK: * Outlets *
     
-    @IBOutlet weak var mapView:        MKMapView!
-    @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBOutlet weak var mapView:             MKMapView!
+    @IBOutlet weak var noImagesLabel:       UILabel!
+    @IBOutlet weak var collectionView:      UICollectionView!
     @IBOutlet weak var newCollectionButton: UIBarButtonItem!
     
     //MARK: * Actions() *
