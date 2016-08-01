@@ -12,7 +12,10 @@ import Alamofire
 
 class FlickrClient
 {
-    private var total = 0
+    private var page       = 1
+    private var totalPages = 0
+    
+    private var currentLocation: Location?
     
     class func sharedInstance() -> FlickrClient {
         
@@ -34,7 +37,8 @@ class FlickrClient
             Constants.ParameterKeys.Method:         Constants.ParameterValues.PhotosSearchMethod,
             Constants.ParameterKeys.NoJSONCallback: Constants.ParameterValues.DisableJSONCB,
             Constants.ParameterKeys.PhotosPerPage:  Constants.ParameterValues.PhotosPerPage,
-            Constants.ParameterKeys.Sort:           Constants.ParameterValues.RelevanceSort
+            Constants.ParameterKeys.Sort:           Constants.ParameterValues.RelevanceSort,
+            Constants.ParameterKeys.Page:           "\(page)"
         ]
         
         Alamofire.request(.GET, Constants.APIBaseURL, parameters: parameters)
@@ -44,54 +48,47 @@ class FlickrClient
                 
                 let result = response.result.value as! [String: AnyObject]
                 
-                let photosArray = result["photos"]!["photo"] as! [[String: AnyObject]]
+                let photos = result["photos"]!
                 
-                self.total = photosArray.count
+                let photosArray = photos["photo"] as! [[String: AnyObject]]
+                
+                self.totalPages = photos["pages"] as! Int
+                
+                self.currentLocation = location
+                
+                self.changePageForLocation(location)
                 
                 dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.rawValue), 0)) {
-                    
-                    var array = [ImageForCell]()
-                    
-                    var numberOfItems = 0
-                    
-                    if self.total > 15
-                    {
-                        numberOfItems = 15
-                    }
-                    else
-                    {
-                        numberOfItems = self.total
-                    }
-                    
-                    while array.count < numberOfItems
-                    {
-                        let rnd   = Int(arc4random_uniform(UInt32(self.total)))
-                        let dict  = photosArray[rnd]
+                   
+                    for dict in photosArray {
                         
-                        var flickrImage = FlickImage(fromDict: dict)
+                        let flickrImage = FlickImage(fromDict: dict)
                         
                         let urlForImage = flickrImage.makeUrlForImage()
                         
-                        for item in array
-                        {
-                            let image = item
-                            
-                            if urlForImage == image.url! { flickrImage.used = true }
-                        }
+                        let imageForCell = ImageForCell(withURL: urlForImage, forLocation: location)
                         
-                        if !flickrImage.used
-                        {
-                            let imageForCell = ImageForCell(withURL: urlForImage, forLocation: location)
-                            
-                            array.append(imageForCell)
-                        }
-                    }                   
-                 
-                    self.downloadImages(forLocation: location)
+                        try! CoreDataStack.sharedInstance().saveContext()
+                        
+                        imageForCell.downloadImage()                        
+                    }
                 }
         }
     }
+    
+    func changePageForLocation(location: Location) {
+        
+        guard  let currentLocation = self.currentLocation else { return }
+        
+        guard currentLocation == location else { page = 1; return }
+        
+        if page < totalPages
+        {
+            page += 1
+        }
+    }
 }
+
 
 extension FlickrClient
 {
@@ -110,6 +107,7 @@ extension FlickrClient
             static let Latitude       = "lat"
             static let PhotosPerPage  = "per_page"
             static let Sort           = "sort"
+            static let Page           = "page"
         }
         
         struct ParameterValues
@@ -118,7 +116,7 @@ extension FlickrClient
             static let Secret         = "1f31975486556a28"
             static let ResponseFormat = "json"
             static let DisableJSONCB  = "1"
-            static let PhotosPerPage  = "100"
+            static let PhotosPerPage  = "15"
             static let RelevanceSort  = "relevance"
             
             static let PhotosSearchMethod = "flickr.photos.search"
@@ -137,16 +135,6 @@ extension FlickrClient
             static let OKStatus = "ok"
         }
     }
-      
-    func downloadImages(forLocation location: Location) {
-        
-        for element in location.images
-        {
-            let image = element as! ImageForCell
-            
-            image.downloadImage()
-        }
-    }    
 }
 
 struct FlickImage
