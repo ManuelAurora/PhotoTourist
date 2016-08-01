@@ -83,6 +83,8 @@ extension MapViewController
         mapView.removeAnnotation(location)
         
         managedContext.deleteObject(location)
+        
+        try! CoreDataStack.sharedInstance().saveContext()
     }
     
     func getLocation(fromGesture gesture: UIGestureRecognizer) -> Location {

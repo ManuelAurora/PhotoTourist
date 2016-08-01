@@ -69,10 +69,13 @@ class FlickrClient
                         dispatch_async(dispatch_get_main_queue(), {
                             
                             _ = ImageForCell(withURL: urlForImage, forLocation: location)
-                            
-                            try! CoreDataStack.sharedInstance().saveContext()
                         })
                     }
+                    
+                    dispatch_async(dispatch_get_main_queue(), {
+                        
+                        try! CoreDataStack.sharedInstance().saveContext()
+                    })
                     
                     self.downloadImages()
                 }

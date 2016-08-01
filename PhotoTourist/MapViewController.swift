@@ -42,7 +42,7 @@ class MapViewController: UIViewController, MKMapViewDelegate
         
         addGestures()
         
-        centerMapView()
+        centerMapView()       
     }
     
     //MARK: * Functions() *

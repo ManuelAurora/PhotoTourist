@@ -114,10 +114,12 @@ extension LocationDetailViewController
             let image = element as! ImageForCell
             
             managedContext.deleteObject(image)
-        }        
+        }
+        
+        try! managedContext.save()
     }
     
-    func updateCollectionButton() {
+    func updateCollectionButton() {        
         
         if selectedIndexPaths.count > 0
         {
