@@ -1,8 +1,8 @@
 # PhotoTourist
 
-Like tourism but do not have much time? 
+You like tourism but do not have much time?
 
-This app is just for you! 
+This app is exact for you!
 
 How to use:
 
