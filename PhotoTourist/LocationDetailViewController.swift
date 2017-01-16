@@ -17,14 +17,16 @@ class LocationDetailViewController: UIViewController
     var location:       Location!
     var managedContext: NSManagedObjectContext!
     
-    var updateIndexPaths   = [NSIndexPath]()
-    var selectedIndexPaths = [NSIndexPath]()
-    var deleteIndexPaths   = [NSIndexPath]()
-    var insertIndexPaths   = [NSIndexPath]()
+    var updateIndexPaths   = [IndexPath]()
+    var selectedIndexPaths = [IndexPath]()
+    var deleteIndexPaths   = [IndexPath]()
+    var insertIndexPaths   = [IndexPath]()
     
-    lazy var fetchController: NSFetchedResultsController = {
+
+    
+    lazy var fetchController: NSFetchedResultsController <ImageForCell> = { _ in
         
-        let fetchRequest = NSFetchRequest(entityName: "ImageForCell")
+        let fetchRequest = NSFetchRequest<ImageForCell>(entityName: "ImageForCell")
         let predicate    = NSPredicate(format: "location=%@", self.location)
         
         fetchRequest.sortDescriptors = []
@@ -49,11 +51,11 @@ class LocationDetailViewController: UIViewController
     
     //MARK: * Actions() *
     
-    @IBAction func makeNewCollection(sender: UIBarButtonItem) {
+    @IBAction func makeNewCollection(_ sender: UIBarButtonItem) {
         
         if sender.title == "New Collection"
         {
-            sender.enabled = false
+            sender.isEnabled = false
             
             removeAllItemsForLocation()
             
@@ -74,7 +76,7 @@ class LocationDetailViewController: UIViewController
         registerNibs()
         updateCollectionButton()
         
-        hideLabel(collectionView.numberOfItemsInSection(0) == 0)
+        hideLabel(collectionView.numberOfItems(inSection: 0) == 0)
     }
     
     override func viewDidLayoutSubviews() {
@@ -101,7 +103,7 @@ class LocationDetailViewController: UIViewController
 
 extension LocationDetailViewController: UICollectionViewDataSource
 {
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         let sectionInfo = fetchController.sections![section]
         
@@ -115,7 +117,7 @@ extension LocationDetailViewController: UICollectionViewDataSource
         }
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = CreateAndConfigureCell(forIndexPath: indexPath)
         
@@ -127,13 +129,13 @@ extension LocationDetailViewController: UICollectionViewDataSource
 
 extension LocationDetailViewController: UICollectionViewDelegate
 {
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! ItemCell
+        let cell = collectionView.cellForItem(at: indexPath) as! ItemCell
         
-        if let index = selectedIndexPaths.indexOf(indexPath)
+        if let index = selectedIndexPaths.index(of: indexPath)
         {
-            selectedIndexPaths.removeAtIndex(index)
+            selectedIndexPaths.remove(at: index)
             
             cell.blurView.alpha = 0
         }
@@ -152,28 +154,28 @@ extension LocationDetailViewController: UICollectionViewDelegate
 
 extension LocationDetailViewController: NSFetchedResultsControllerDelegate
 {
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         
         switch type
         {
-        case .Update:
+        case .update:
                        
             updateIndexPaths.append(indexPath!)
             
-        case .Delete:
+        case .delete:
             
             deleteIndexPaths.append(indexPath!)
             
-        case .Insert:
+        case .insert:
             
             insertIndexPaths.append(newIndexPath!)
             
-        case .Move:
+        case .move:
             print("Moved")
         }
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         
         changeItemsInContent()
         

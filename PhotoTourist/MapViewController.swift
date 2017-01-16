@@ -26,7 +26,7 @@ class MapViewController: UIViewController, MKMapViewDelegate
     
     //MARK: * Actions() *
     
-    @IBAction func edit(sender: AnyObject) {
+    @IBAction func edit(_ sender: AnyObject) {
      
         toggleDeletion()
     }
@@ -47,9 +47,9 @@ class MapViewController: UIViewController, MKMapViewDelegate
     
     //MARK: * Functions() *
     
-    func handlePressure(gestureRecognizer: UIGestureRecognizer) {        
+    func handlePressure(_ gestureRecognizer: UIGestureRecognizer) {        
         
-        guard gestureRecognizer.state == .Began else { return }
+        guard gestureRecognizer.state == .began else { return }
         
         let location = getLocation(fromGesture: gestureRecognizer)
         
@@ -58,7 +58,7 @@ class MapViewController: UIViewController, MKMapViewDelegate
         mapView.addAnnotation(location)
     }
     
-    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
         if deletingPins
         {
@@ -72,12 +72,12 @@ class MapViewController: UIViewController, MKMapViewDelegate
         
     }
     
-    func showDetails(annotation: MKAnnotationView) {
+    func showDetails(_ annotation: MKAnnotationView) {
         
-        performSegueWithIdentifier("ShowPhoto", sender: annotation)
+        performSegue(withIdentifier: "ShowPhoto", sender: annotation)
     }
     
-    func mapView(mapView: MKMapView, didAddAnnotationViews views: [MKAnnotationView]) {        
+    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {        
         
         for annotation in views
         {
@@ -88,13 +88,13 @@ class MapViewController: UIViewController, MKMapViewDelegate
     
     //MARK: * Segues *
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let annotationView = sender as! MKAnnotationView
         
         let location = annotationView.annotation as! Location
         
-        let controller = segue.destinationViewController as! LocationDetailViewController
+        let controller = segue.destination as! LocationDetailViewController
         
         controller.location       = location
         controller.managedContext = managedContext

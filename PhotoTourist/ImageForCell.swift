@@ -11,7 +11,7 @@ import CoreData
 
 class ImageForCell: NSManagedObject
 {
-    @NSManaged var imageData: NSData?
+    @NSManaged var imageData: Data?
     @NSManaged var url:       String?
     @NSManaged var location:  Location?
     
@@ -19,15 +19,15 @@ class ImageForCell: NSManagedObject
     
     var loaded: Bool = false
     
-    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertInto: context)
     }
     
     convenience init(withURL url: String, forLocation location: Location) {
         
-        let entity = NSEntityDescription.entityForName("ImageForCell", inManagedObjectContext: CoreDataStack.sharedInstance().context)
+        let entity = NSEntityDescription.entity(forEntityName: "ImageForCell", in: CoreDataStack.sharedInstance().context)
         
-        self.init(entity: entity!, insertIntoManagedObjectContext: CoreDataStack.sharedInstance().context)
+        self.init(entity: entity!, insertInto: CoreDataStack.sharedInstance().context)
         
         self.location = location
         self.url      = url
@@ -37,21 +37,21 @@ class ImageForCell: NSManagedObject
         
         guard let url = url else { return }
         
-        let session  = NSURLSession.sharedSession()
-        let imageUrl = NSURL(string: url)
+        let session  = URLSession.shared
+        let imageUrl = URL(string: url)
         
-        let task = session.dataTaskWithURL(imageUrl!) { (data, response, error) in
+        let task = session.dataTask(with: imageUrl!, completionHandler: { (data, response, error) in
             
             if let data = data, let image = UIImage(data: data)
             {
-                dispatch_async(dispatch_get_main_queue(), { 
+                DispatchQueue.main.async(execute: { 
                     self.image     = image
                     self.imageData = data
                     self.loaded    = true
 
                 })
             }
-        }
+        }) 
         
         task.resume()
     }

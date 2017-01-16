@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6343A768B0CF258651F70BC6 /* Pods_PhotoTourist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1136049442C16546499E42F9 /* Pods_PhotoTourist.framework */; };
 		64557EAF1D3E59E0005C0AF0 /* LocationDetailViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64557EAE1D3E59E0005C0AF0 /* LocationDetailViewController + Extension.swift */; };
 		64592EFD1D2E60F60015408F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64592EFC1D2E60F60015408F /* AppDelegate.swift */; };
 		64592EFF1D2E60F60015408F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64592EFE1D2E60F60015408F /* MapViewController.swift */; };
@@ -26,8 +27,8 @@
 		647517DE1D35363900BB2ECF /* MapViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647517DD1D35363900BB2ECF /* MapViewController + Extension.swift */; };
 		647517E01D353CE300BB2ECF /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647517DF1D353CE300BB2ECF /* ItemCell.swift */; };
 		64B5DD1F1D4F85440074E05E /* FlickrAPI_Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B5DD1E1D4F85440074E05E /* FlickrAPI_Constants.swift */; };
+		64E0AB4C1E2CB5450045415F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64E0AB4B1E2CB5450045415F /* Alamofire.framework */; };
 		9477601F1B9C937682D826ED /* Pods_PhotoTouristTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A82F374EE2FB42B77B71B8 /* Pods_PhotoTouristTests.framework */; };
-		CB3C7E8BAB02092D6654A725 /* Pods_PhotoTourist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1136049442C16546499E42F9 /* Pods_PhotoTourist.framework */; };
 		F941E899A533E6B86F65A71F /* Pods_PhotoTouristUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4718F1198C6482B9E7971E5 /* Pods_PhotoTouristUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,7 @@
 		647517DD1D35363900BB2ECF /* MapViewController + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapViewController + Extension.swift"; sourceTree = "<group>"; };
 		647517DF1D353CE300BB2ECF /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		64B5DD1E1D4F85440074E05E /* FlickrAPI_Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrAPI_Constants.swift; sourceTree = "<group>"; };
+		64E0AB4B1E2CB5450045415F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		93BAB024C8AFAE7764C9D0B9 /* Pods-PhotoTouristTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoTouristTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoTouristTests/Pods-PhotoTouristTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C4718F1198C6482B9E7971E5 /* Pods_PhotoTouristUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoTouristUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D178A3D64146096BDAAEC341 /* Pods-PhotoTouristUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoTouristUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoTouristUITests/Pods-PhotoTouristUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -90,7 +92,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB3C7E8BAB02092D6654A725 /* Pods_PhotoTourist.framework in Frameworks */,
+				64E0AB4C1E2CB5450045415F /* Alamofire.framework in Frameworks */,
+				6343A768B0CF258651F70BC6 /* Pods_PhotoTourist.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +277,7 @@
 		831420C7873FCC48A40D5885 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				64E0AB4B1E2CB5450045415F /* Alamofire.framework */,
 				1136049442C16546499E42F9 /* Pods_PhotoTourist.framework */,
 				57A82F374EE2FB42B77B71B8 /* Pods_PhotoTouristTests.framework */,
 				C4718F1198C6482B9E7971E5 /* Pods_PhotoTouristUITests.framework */,
@@ -358,15 +362,18 @@
 					64592EF81D2E60F60015408F = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 99MX98QF2R;
+						LastSwiftMigration = 0820;
 					};
 					64592F0F1D2E60F60015408F = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 99MX98QF2R;
+						LastSwiftMigration = 0820;
 						TestTargetID = 64592EF81D2E60F60015408F;
 					};
 					64592F1A1D2E60F60015408F = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 99MX98QF2R;
+						LastSwiftMigration = 0820;
 						TestTargetID = 64592EF81D2E60F60015408F;
 					};
 				};
@@ -702,10 +709,15 @@
 			baseConfigurationReference = 2901BBCE9F3F0DB46FE3A042 /* Pods-PhotoTourist.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Alamofire",
+				);
 				INFOPLIST_FILE = PhotoTourist/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AuroraInterplay.PhotoTourist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -714,10 +726,15 @@
 			baseConfigurationReference = EF8479E8899F062C06D47C08 /* Pods-PhotoTourist.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Alamofire",
+				);
 				INFOPLIST_FILE = PhotoTourist/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AuroraInterplay.PhotoTourist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -730,6 +747,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AuroraInterplay.PhotoTouristTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhotoTourist.app/PhotoTourist";
 			};
 			name = Debug;
@@ -743,6 +761,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AuroraInterplay.PhotoTouristTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhotoTourist.app/PhotoTourist";
 			};
 			name = Release;
@@ -755,6 +774,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AuroraInterplay.PhotoTouristUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = PhotoTourist;
 			};
 			name = Debug;
@@ -767,6 +787,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AuroraInterplay.PhotoTouristUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = PhotoTourist;
 			};
 			name = Release;

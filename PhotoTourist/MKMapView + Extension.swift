@@ -10,7 +10,7 @@ import MapKit
 
 extension MKMapView {
     
-    func setZoomByDelta(delta: Double, animated: Bool) {
+    func setZoomByDelta(_ delta: Double, animated: Bool) {
         
         var zoomedRegion = self.region
         var span         = self.region.span

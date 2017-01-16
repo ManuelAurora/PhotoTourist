@@ -21,15 +21,15 @@ class Location: NSManagedObject, MKAnnotation
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
     
-    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertInto: context)
     }
     
     convenience init(withCoordinate: CLLocationCoordinate2D) {
         
-        let entity = NSEntityDescription.entityForName("Location", inManagedObjectContext: CoreDataStack.sharedInstance().context)
+        let entity = NSEntityDescription.entity(forEntityName: "Location", in: CoreDataStack.sharedInstance().context)
     
-        self.init(entity: entity!, insertIntoManagedObjectContext: CoreDataStack.sharedInstance().context)
+        self.init(entity: entity!, insertInto: CoreDataStack.sharedInstance().context)
              
         
         longitude = withCoordinate.longitude

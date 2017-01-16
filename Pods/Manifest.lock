@@ -1,21 +1,12 @@
 PODS:
-  - Alamofire (3.4.1)
-  - OAuthSwift (0.5.2)
-  - p2.OAuth2 (2.2.7):
-    - SwiftKeychain (~> 1.0)
-  - SwiftKeychain (1.0.0)
+  - Alamofire (4.3.0)
 
 DEPENDENCIES:
-  - Alamofire (= 3.4.1)
-  - OAuthSwift (~> 0.5.0)
-  - p2.OAuth2 (= 2.2.7)
+  - Alamofire (~> 4.3)
 
 SPEC CHECKSUMS:
-  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
-  OAuthSwift: 1ef042d4362e755e24a78f158d817245641a5d24
-  p2.OAuth2: a4391406917fc2a3bb820aec6e1180b8f87321fd
-  SwiftKeychain: fd9ad69f7b3ff7a0c7ba579da508bbaa89a395b2
+  Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
 
-PODFILE CHECKSUM: a503a09f4e33a23e72c3d7458f9d843413f998e1
+PODFILE CHECKSUM: 52054e72664aade30028b97e42fa656415910bfe
 
 COCOAPODS: 1.0.1

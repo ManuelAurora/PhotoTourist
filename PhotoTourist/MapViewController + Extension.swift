@@ -17,13 +17,13 @@ extension MapViewController
         
         if wasLaunched() == true
         {
-            let userDefaults = NSUserDefaults.standardUserDefaults()
+            let userDefaults = UserDefaults.standard
             
-            let latitude  = userDefaults.doubleForKey("Latitude")
-            let longitude = userDefaults.doubleForKey("Longitude")
+            let latitude  = userDefaults.double(forKey: "Latitude")
+            let longitude = userDefaults.double(forKey: "Longitude")
             
-            let span      = MKCoordinateSpan(latitudeDelta:  userDefaults.doubleForKey("LatDelta"),
-                                             longitudeDelta: userDefaults.doubleForKey("LonDelta"))
+            let span      = MKCoordinateSpan(latitudeDelta:  userDefaults.double(forKey: "LatDelta"),
+                                             longitudeDelta: userDefaults.double(forKey: "LonDelta"))
             
             let loadedRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: span)
             
@@ -31,7 +31,7 @@ extension MapViewController
         }
         else
         {
-            let userDefaults = NSUserDefaults.standardUserDefaults()
+            let userDefaults = UserDefaults.standard
             
             let location = CLLocationCoordinate2D(
                 latitude: 31.237789,
@@ -42,15 +42,15 @@ extension MapViewController
             let region = MKCoordinateRegion(center: location, span: span)
             self.mapView.setRegion(region, animated: true)
             
-            userDefaults.setBool(true, forKey: "FirstLaunch")
+            userDefaults.set(true, forKey: "FirstLaunch")
         }
     }
     
     func wasLaunched() -> Bool {
         
-        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let userDefaults = UserDefaults.standard
         
-        return userDefaults.boolForKey("FirstLaunch")        
+        return userDefaults.bool(forKey: "FirstLaunch")        
     }
     
     func addGestures() {
@@ -70,33 +70,33 @@ extension MapViewController
         
         deletingPins = !deletingPins
         
-        UIView.transitionWithView(editMapView, duration: 0.5, options: .TransitionCrossDissolve, animations: {
+        UIView.transition(with: editMapView, duration: 0.5, options: .transitionCrossDissolve, animations: {
             
-            self.editMapView.hidden = !self.deletingPins
+            self.editMapView.isHidden = !self.deletingPins
             
             let title = self.deletingPins ? "Done" : "Edit"
             
-            self.editDoneButton.setTitle(title, forState: .Normal)
+            self.editDoneButton.setTitle(title, for: UIControlState())
             
             }, completion: nil)        
     }
     
-    func deleteLocationView(view: MKAnnotationView) {
+    func deleteLocationView(_ view: MKAnnotationView) {
         
         let location = view.annotation as! Location
         
         mapView.removeAnnotation(location)
         
-        managedContext.deleteObject(location)
+        managedContext.delete(location)
         
         try! CoreDataStack.sharedInstance().saveContext()
     }
     
     func getLocation(fromGesture gesture: UIGestureRecognizer) -> Location {
                 
-        let touchPoint = gesture.locationInView(mapView!)
+        let touchPoint = gesture.location(in: mapView!)
         
-        let touchCoordinate = mapView.convertPoint(touchPoint, toCoordinateFromView: mapView!)
+        let touchCoordinate = mapView.convert(touchPoint, toCoordinateFrom: mapView!)
         
         let location = Location(withCoordinate: touchCoordinate)
         
@@ -105,27 +105,27 @@ extension MapViewController
         return location
     }
     
-    func animateAnnotation(annotation: MKAnnotationView) {
+    func animateAnnotation(_ annotation: MKAnnotationView) {
         
         let endFrame = annotation.frame
         
-        annotation.frame = CGRectOffset(endFrame, 0, -500)
+        annotation.frame = endFrame.offsetBy(dx: 0, dy: -500)
         
-        UIView.animateWithDuration(0.5, delay: 0.1, options: .CurveEaseIn, animations: { 
+        UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveEaseIn, animations: { 
             
             annotation.frame = endFrame
             
             }) {  _ in
                 
-                UIView.animateWithDuration(0.05, delay: 0, options: .CurveEaseInOut, animations: { 
+                UIView.animate(withDuration: 0.05, delay: 0, options: UIViewAnimationOptions(), animations: { 
                     
-                    annotation.transform = CGAffineTransformMakeScale(1, 0.6)
+                    annotation.transform = CGAffineTransform(scaleX: 1, y: 0.6)
                     
                 }) { _ in
                 
-                    UIView.animateWithDuration(0.1, delay: 0, options: .CurveEaseInOut, animations: { 
+                    UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions(), animations: { 
                         
-                        annotation.transform = CGAffineTransformIdentity
+                        annotation.transform = CGAffineTransform.identity
                         
                         }, completion: nil)
                 }
@@ -134,9 +134,9 @@ extension MapViewController
     
     func fetchLocations() -> [Location] {
         
-        let request = NSFetchRequest(entityName: "Location")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Location")
         
-        let result = try! managedContext.executeFetchRequest(request) as! [Location]
+        let result = try! managedContext.fetch(request) as! [Location]
         
         return result
     }

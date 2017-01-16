@@ -12,10 +12,10 @@ import Alamofire
 
 class FlickrClient
 {
-    private var page       = 1
-    private var totalPages = 0
+    fileprivate var page       = 1
+    fileprivate var totalPages = 0
     
-    private var currentLocation: Location?
+    fileprivate var currentLocation: Location?
     
     class func sharedInstance() -> FlickrClient {
         
@@ -27,7 +27,7 @@ class FlickrClient
         return Singleton.client
     }
     
-    func fetchDataForLocation(location location: Location) {
+    func fetchDataForLocation(location: Location) {
         
         let parameters = [
             Constants.ParameterKeys.Longitude:      "\(location.longitude)",
@@ -41,7 +41,7 @@ class FlickrClient
             Constants.ParameterKeys.Page:           "\(page)"
         ]
         
-        Alamofire.request(.GET, Constants.APIBaseURL, parameters: parameters)
+        Alamofire.request(Constants.APIBaseURL, method: .get, parameters: parameters)
             .validate(statusCode: 200..<300)
             .validate()
             .responseJSON { (response) in
@@ -58,31 +58,28 @@ class FlickrClient
                 
                 self.changePageForLocation(location)
                 
-                dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.rawValue), 0)) {
-                   
-                    for dict in photosArray {
-                        
+                DispatchQueue.global().async {
+                    for dict in photosArray
+                    {
                         let flickrImage = FlickImage(fromDict: dict)
                         
                         let urlForImage = flickrImage.makeUrlForImage()
                         
-                        dispatch_async(dispatch_get_main_queue(), {
-                            
-                            _ = ImageForCell(withURL: urlForImage, forLocation: location)
-                        })
+                        DispatchQueue.main.async {
+                                _ = ImageForCell(withURL: urlForImage, forLocation: location)
+                        }
                     }
                     
-                    dispatch_async(dispatch_get_main_queue(), {
-                        
+                    DispatchQueue.main.sync {
                         try! CoreDataStack.sharedInstance().saveContext()
-                    })
+                    }
                     
                     self.downloadImages()
                 }
         }
     }
     
-    func changePageForLocation(location: Location) {
+    func changePageForLocation(_ location: Location) {
         
         guard  let currentLocation = self.currentLocation else { return }
         
@@ -96,7 +93,7 @@ class FlickrClient
         
         guard let currentLocation = currentLocation else { return }
         
-        dispatch_async(dispatch_get_main_queue(), {
+        DispatchQueue.main.async(execute: {
             
             for element in currentLocation.images
             {

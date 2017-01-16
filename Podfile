@@ -6,12 +6,17 @@ target 'PhotoTourist' do
   # Comment this line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-  pod 'Alamofire', '3.4.1'
-  pod 'p2.OAuth2', '2.2.7'
-  pod 'OAuthSwift', '~> 0.5.0'
-  # Pods for PhotoTourist
+pod 'Alamofire', '~> 4.3'
 
-  target 'PhotoTouristTests' do
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['SWIFT_VERSION'] = '3.0'
+        end
+    end
+end
+
+target 'PhotoTouristTests' do
     inherit! :search_paths
     # Pods for testing
   end
@@ -22,3 +27,5 @@ target 'PhotoTourist' do
   end
 
 end
+
+

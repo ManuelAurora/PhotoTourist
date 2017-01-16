@@ -16,7 +16,7 @@ extension LocationDetailViewController
     func makeCustomLayout() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         
-        collectionView.backgroundColor = UIColor.whiteColor()
+        collectionView.backgroundColor = UIColor.white
         
         layout.sectionInset            = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         layout.minimumLineSpacing      = 4
@@ -35,24 +35,24 @@ extension LocationDetailViewController
         
         for item in selectedIndexPaths
         {
-            array.append(fetchController.objectAtIndexPath(item) as! ImageForCell)
+            array.append(fetchController.object(at: item) as! ImageForCell)
         }
         
         for item in array
         {
-            managedContext.deleteObject(item)
+            managedContext.delete(item)
         }
         
         try! managedContext.save()
         
-        selectedIndexPaths = [NSIndexPath]()        
+        selectedIndexPaths = [IndexPath]()        
     }
     
     func registerNibs() {
         
         let cellNib = UINib(nibName: "ItemCell", bundle: nil)
         
-        collectionView.registerNib(cellNib, forCellWithReuseIdentifier: "ItemCell")
+        collectionView.register(cellNib, forCellWithReuseIdentifier: "ItemCell")
     }
     
     func setupMapViewCenterCoordinate() {
@@ -61,18 +61,18 @@ extension LocationDetailViewController
         
         mapView.setZoomByDelta(0.1, animated: true)
         
-        mapView.setCenterCoordinate(coordinate, animated: false)
+        mapView.setCenter(coordinate, animated: false)
         
         mapView.addAnnotation(location)
         
-        mapView.zoomEnabled            = false
-        mapView.scrollEnabled          = false
-        mapView.userInteractionEnabled = false
+        mapView.isZoomEnabled            = false
+        mapView.isScrollEnabled          = false
+        mapView.isUserInteractionEnabled = false
     }
     
-    func removeActivityIndicator(indicator: UIActivityIndicatorView) {
+    func removeActivityIndicator(_ indicator: UIActivityIndicatorView) {
         
-        indicator.hidden = true
+        indicator.isHidden = true
         indicator.stopAnimating()
     }
     
@@ -82,24 +82,24 @@ extension LocationDetailViewController
                 
                 for indexPath in self.deleteIndexPaths
                 {
-                    self.collectionView.deleteItemsAtIndexPaths([indexPath])
+                    self.collectionView.deleteItems(at: [indexPath as IndexPath])
                 }
                 
-                self.deleteIndexPaths = [NSIndexPath]()
+                self.deleteIndexPaths = [IndexPath]()
                 
                 for indexPath in self.insertIndexPaths
                 {
-                    self.collectionView.insertItemsAtIndexPaths([indexPath])
+                    self.collectionView.insertItems(at: [indexPath as IndexPath])
                 }
                 
-                self.insertIndexPaths = [NSIndexPath]()
+                self.insertIndexPaths = [IndexPath]()
                 
                 for indexPath in self.updateIndexPaths
                 {
-                    self.collectionView.reloadItemsAtIndexPaths([indexPath])
+                    self.collectionView.reloadItems(at: [indexPath as IndexPath])
                 }
                 
-                self.updateIndexPaths = [NSIndexPath]()
+                self.updateIndexPaths = [IndexPath]()
                 
             }) { _ in
                 
@@ -113,7 +113,7 @@ extension LocationDetailViewController
         {
             let image = element as! ImageForCell
             
-            managedContext.deleteObject(image)
+            managedContext.delete(image)
         }
         
         try! managedContext.save()
@@ -130,12 +130,12 @@ extension LocationDetailViewController
             newCollectionButton.title = "New Collection"
         }
         
-        if !newCollectionButton.enabled { enableCollectionButton() }
+        if !newCollectionButton.isEnabled { enableCollectionButton() }
     }
     
-    func hideLabel(notHaveItems: Bool) {
+    func hideLabel(_ notHaveItems: Bool) {
         
-        noImagesLabel.hidden = !notHaveItems
+        noImagesLabel.isHidden = !notHaveItems
         
     }
     
@@ -150,14 +150,14 @@ extension LocationDetailViewController
             if image.loaded { counter += 1 }
         }
         
-        if counter == location.images.count { newCollectionButton.enabled = true }
+        if counter == location.images.count { newCollectionButton.isEnabled = true }
     }
     
-    func CreateAndConfigureCell(forIndexPath indexPath: NSIndexPath) -> ItemCell {
+    func CreateAndConfigureCell(forIndexPath indexPath: IndexPath) -> ItemCell {
         
         let imageForCell = fetchController.fetchedObjects![indexPath.row] as! ImageForCell
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ItemCell", forIndexPath: indexPath) as! ItemCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as! ItemCell
         
         if imageForCell.image != nil
         {
